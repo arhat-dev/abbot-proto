@@ -1,0 +1,137 @@
+/*
+Copyright 2019 The arhat.dev Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+syntax = "proto3";
+
+package abbot;
+
+option go_package = "arhat.dev/abbot-proto/abbotgopb";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+// CNI rpc service to handle cni operations
+// https://github.com/containernetworking/cni/blob/master/SPEC.md
+service NetworkManager {
+    rpc Process (Request) returns (Response);
+}
+
+message CNICapArgs {
+    message PortMap {
+        int32 container_port = 1 [(gogoproto.jsontag) = "containerPort"];
+        int32 host_port = 2 [(gogoproto.jsontag) = "hostPort"];
+        string protocol = 3 [(gogoproto.jsontag) = "protocol"];
+        string host_ip = 4 [(gogoproto.jsontag) = "hostIP"];
+    }
+
+    message Bandwidth {
+        int32 ingress_rate = 1 [(gogoproto.jsontag) = "ingressRate,omitempty"];
+        int32 ingress_burst = 2 [(gogoproto.jsontag) = "ingressBurst,omitempty"];
+        int32 egress_rate = 3 [(gogoproto.jsontag) = "egressRate,omitempty"];
+        int32 egress_burst = 4 [(gogoproto.jsontag) = "egressBurst,omitempty"];
+    }
+
+    message IPRange {
+        string subnet = 1 [(gogoproto.jsontag) = "subnet"];
+        string range_start = 2 [(gogoproto.jsontag) = "rangeStart,omitempty"];
+        string range_end = 3 [(gogoproto.jsontag) = "rangeEnd,omitempty"];
+        string gateway = 4 [(gogoproto.jsontag) = "gateway,omitempty"];
+    }
+
+    message DNSConfig {
+        repeated string servers = 1 [(gogoproto.jsontag) = "servers,omitempty"];
+        repeated string searches = 2 [(gogoproto.jsontag) = "searches,omitempty"];
+        repeated string options = 3 [(gogoproto.jsontag) = "options,omitempty"];
+    }
+
+    oneof option {
+        PortMap port_map_arg = 1;
+        Bandwidth bandwidth_arg = 2;
+        IPRange ip_range_arg = 3;
+        DNSConfig dns_config_arg = 4;
+    }
+}
+
+message CreateOptions {
+    string container_id = 1;
+    uint32 pid = 2;
+
+    map<string, string> cni_args = 4;
+    repeated CNICapArgs cap_args = 5;
+}
+
+message ConfigOptions {
+    string ipv4_subnet = 1;
+    string ipv6_subnet = 2;
+}
+
+message GetAddrOptions {
+    uint32 pid = 1;
+}
+
+message UpdateLinkOptions {
+    string container_id = 1;
+    uint32 pid = 2;
+    string ipv4_pod_cidr = 3;
+    string ipv6_pod_cidr = 4;
+}
+
+message RestoreLinkOptions {
+    string container_id = 1;
+    uint32 pid = 2;
+}
+
+message DeleteLinkOptions {
+    string container_id = 1;
+    uint32 pid = 2;
+}
+
+message Request {
+    enum ActionType {
+        _invalid = 0;
+
+        CREATE = 1;
+        DELETE = 2;
+        UPDATE_CONFIG = 3;
+        GET_ADDR = 4;
+        UPDATE_LINK = 5;
+        RESTORE_LINK = 6;
+    }
+
+    ActionType action = 1;
+
+    oneof option {
+        CreateOptions create_opts = 2;
+        ConfigOptions config_opts = 3;
+        GetAddrOptions get_addr_opts = 4;
+        UpdateLinkOptions update_link_opts = 5;
+        RestoreLinkOptions restore_link_opts = 6;
+        DeleteLinkOptions delete_link_opts = 7;
+    }
+}
+
+message Response {
+    oneof resp {
+        AddressResponse addr_resp = 6;
+        EmptyResponse empty_resp = 7;
+    }
+}
+
+message AddressResponse {
+    string ip = 1;
+}
+
+message EmptyResponse {
+}

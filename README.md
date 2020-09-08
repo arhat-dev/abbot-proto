@@ -1,11 +1,11 @@
-# template-proto
+# abbot-proto
 
-[![CI](https://github.com/arhat-dev/template-proto/workflows/CI/badge.svg)](https://github.com/arhat-dev/template-proto/actions?query=workflow%3ACI)
-[![PkgGoDev](https://pkg.go.dev/badge/arhat.dev/template-proto)](https://pkg.go.dev/arhat.dev/template-proto)
-[![GoReportCard](https://goreportcard.com/badge/arhat.dev/template-proto)](https://goreportcard.com/report/arhat.dev/template-proto)
-[![codecov](https://codecov.io/gh/arhat-dev/template-proto/branch/master/graph/badge.svg)](https://codecov.io/gh/arhat-dev/template-proto)
+[![CI](https://github.com/arhat-dev/abbot-proto/workflows/CI/badge.svg)](https://github.com/arhat-dev/abbot-proto/actions?query=workflow%3ACI)
+[![PkgGoDev](https://pkg.go.dev/badge/arhat.dev/abbot-proto)](https://pkg.go.dev/arhat.dev/abbot-proto)
+[![GoReportCard](https://goreportcard.com/badge/arhat.dev/abbot-proto)](https://goreportcard.com/report/arhat.dev/abbot-proto)
+[![codecov](https://codecov.io/gh/arhat-dev/abbot-proto/branch/master/graph/badge.svg)](https://codecov.io/gh/arhat-dev/abbot-proto)
 
-Template protocol repo
+abbot protocol repo
 
 ## Workflow
 
