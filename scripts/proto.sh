@@ -34,6 +34,7 @@ fix_pb_gen_json_name() {
 }
 
 _do_gen_proto_go() {
+  rm -rf ./abbotgopb/*.pb.go
   # shellcheck disable=SC2086
   protoc \
     -I"${GOPATH}/src" \
@@ -47,6 +48,7 @@ _do_gen_proto_go() {
 }
 
 _do_gen_proto_c() {
+  rm -rf ./abbotnanopb/*.pb.h ./abbotnanopb/*.pb.c
   # shellcheck disable=SC2086
   pipenv run \
   python build/nanopb/generator/nanopb_generator.py \
@@ -57,6 +59,7 @@ _do_gen_proto_c() {
     -I"${GOPATH}/src/github.com/gogo/protobuf/protobuf" \
     -I"./src" \
     ${PROTO_SOURCE}
+  rm -rf ./abbotnanopb/google ./abbotnanopb/github.com
 }
 
 CODE_LANG=$(printf "%s" "$@" | cut -d. -f3)

@@ -21,13 +21,10 @@ package abbot;
 option go_package = "arhat.dev/abbot-proto/abbotgopb";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "meta.proto";
 
-// CNI rpc service to handle cni operations
-// https://github.com/containernetworking/cni/blob/master/SPEC.md
-service NetworkManager {
-    rpc Process (Request) returns (Response);
-}
-
+// CNI capabilities args
+// https://github.com/containernetworking/cni/blob/master/CONVENTIONS.md#well-known-capabilities
 message CNICapArgs {
     message PortMap {
         int32 container_port = 1 [(gogoproto.jsontag) = "containerPort"];
@@ -56,82 +53,74 @@ message CNICapArgs {
         repeated string options = 3 [(gogoproto.jsontag) = "options,omitempty"];
     }
 
+    message IPAddresses {
+        repeated string ips = 1 [(gogoproto.jsontag) = "ips,omitempty"];
+    }
+
+    message MacAddress {
+        string mac = 1 [(gogoproto.jsontag) = "mac,omitempty"];
+    }
+
+    message InfinibandGUID {
+        string infiniband_guid = 1 [(gogoproto.jsontag) = "infinibandGUID,omitempty"];
+    }
+
+    message DeviceID {
+        string device_id = 1 [(gogoproto.jsontag) = "deviceID,omitempty"];
+    }
+
     oneof option {
         PortMap port_map_arg = 1;
         Bandwidth bandwidth_arg = 2;
         IPRange ip_range_arg = 3;
         DNSConfig dns_config_arg = 4;
+        IPAddresses ip_addresses_arg = 5;
+        MacAddress mac_address_arg = 6;
+        InfinibandGUID infiniband_guid_arg = 7;
+        DeviceID device_id_arg = 8;
     }
 }
 
-message CreateOptions {
+// Requests extending CNI commands
+// https://github.com/containernetworking/cni/blob/master/SPEC.md#parameters
+
+message ContainerNetworkEnsureRequest {
+    // (required) container id
     string container_id = 1;
+
+    // (required) pid will be used to form the netns path (/proc/<pid>/ns/net)
     uint32 pid = 2;
 
-    map<string, string> cni_args = 4;
-    repeated CNICapArgs cap_args = 5;
+    // if no args provided, this Request instructs abbot to retrieve container network 
+    // config stored in its dataDir and restore the container network
+
+    // (optional) capabilities args
+    repeated CNICapArgs cap_args = 3;
+
+    // (optional) cni_args
+    // https://github.com/containernetworking/cni/blob/master/CONVENTIONS.md#cni_args
+    map<string, string> cni_args = 4;  // [deprecated = true] (still widely used)
 }
 
-message ConfigOptions {
+message ContainerNetworkDeleteRequest {
+    // (required) container id
+    string container_id = 1;
+
+    // (required) pid will be used to form the netns path (/proc/<pid>/ns/net)
+    uint32 pid = 2;
+}
+
+// Update CNI config by rendering the config template predefined in abbot's config
+// this Request containes all variables supported in the config template
+message ContainerNetworkConfigUpdateRequest {
     string ipv4_subnet = 1;
     string ipv6_subnet = 2;
 }
 
-message GetAddrOptions {
+message ContainerNetworkQueryRequest {
     uint32 pid = 1;
 }
 
-message UpdateLinkOptions {
-    string container_id = 1;
-    uint32 pid = 2;
-    string ipv4_pod_cidr = 3;
-    string ipv6_pod_cidr = 4;
-}
-
-message RestoreLinkOptions {
-    string container_id = 1;
-    uint32 pid = 2;
-}
-
-message DeleteLinkOptions {
-    string container_id = 1;
-    uint32 pid = 2;
-}
-
-message Request {
-    enum ActionType {
-        _invalid = 0;
-
-        CREATE = 1;
-        DELETE = 2;
-        UPDATE_CONFIG = 3;
-        GET_ADDR = 4;
-        UPDATE_LINK = 5;
-        RESTORE_LINK = 6;
-    }
-
-    ActionType action = 1;
-
-    oneof option {
-        CreateOptions create_opts = 2;
-        ConfigOptions config_opts = 3;
-        GetAddrOptions get_addr_opts = 4;
-        UpdateLinkOptions update_link_opts = 5;
-        RestoreLinkOptions restore_link_opts = 6;
-        DeleteLinkOptions delete_link_opts = 7;
-    }
-}
-
-message Response {
-    oneof resp {
-        AddressResponse addr_resp = 6;
-        EmptyResponse empty_resp = 7;
-    }
-}
-
-message AddressResponse {
-    string ip = 1;
-}
-
-message EmptyResponse {
+message ContainerNetworkStatusResponse {
+    repeated InterfaceInfo interfaces = 1;
 }

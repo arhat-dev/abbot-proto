@@ -1,0 +1,51 @@
+/*
+Copyright 2019 The arhat.dev Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+syntax = "proto3";
+
+package abbot;
+
+option go_package = "arhat.dev/abbot-proto/abbotgopb";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+enum RequestType {
+    _INVALID_REQUEST = 0;
+
+    REQ_ENSURE_CTR_NETWORK = 1;
+    REQ_DELETE_CTR_NETWORK = 2;
+    REQ_QUERY_CTR_NETWORK = 3;
+    REQ_UPDATE_CTR_NETWORK_CONFIG = 4;
+}
+
+message Request {
+    RequestType kind = 1;
+
+    bytes body = 2;
+}
+
+enum ResponseType {
+    _INVALID_RESPONSE = 0;
+
+    RESP_DONE = 1;
+    RESP_CTR_NETWORK_STATUS = 2;
+}
+
+message Response {
+    ResponseType kind = 1;
+
+    bytes body = 2;
+}
