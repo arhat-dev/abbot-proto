@@ -43,7 +43,9 @@ enum ResponseType {
     _INVALID_RESPONSE = 0;
 
     RESP_DONE = 1;
+
     RESP_CTR_NETWORK_STATUS = 2;
+    RESP_CTR_NETWORK_STATUS_LIST = 3;
 }
 
 message Response {

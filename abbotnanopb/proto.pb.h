@@ -26,7 +26,8 @@ typedef enum _abbot_RequestType {
 typedef enum _abbot_ResponseType {
     abbot_ResponseType__INVALID_RESPONSE = 0,
     abbot_ResponseType_RESP_DONE = 1,
-    abbot_ResponseType_RESP_CTR_NETWORK_STATUS = 2
+    abbot_ResponseType_RESP_CTR_NETWORK_STATUS = 2,
+    abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST = 3
 } abbot_ResponseType;
 
 /* Struct definitions */
@@ -47,8 +48,8 @@ typedef struct _abbot_Response {
 #define _abbot_RequestType_ARRAYSIZE ((abbot_RequestType)(abbot_RequestType_REQ_QUERY_CTR_NETWORK+1))
 
 #define _abbot_ResponseType_MIN abbot_ResponseType__INVALID_RESPONSE
-#define _abbot_ResponseType_MAX abbot_ResponseType_RESP_CTR_NETWORK_STATUS
-#define _abbot_ResponseType_ARRAYSIZE ((abbot_ResponseType)(abbot_ResponseType_RESP_CTR_NETWORK_STATUS+1))
+#define _abbot_ResponseType_MAX abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST
+#define _abbot_ResponseType_ARRAYSIZE ((abbot_ResponseType)(abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST+1))
 
 
 /* Initializer values for message structs */

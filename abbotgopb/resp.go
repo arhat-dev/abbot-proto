@@ -15,6 +15,8 @@ func NewResponse(resp proto.Marshaler) (*Response, error) {
 	switch resp.(type) {
 	case *ContainerNetworkStatusResponse:
 		kind = RESP_CTR_NETWORK_STATUS
+	case *ContainerNetworkStatusListResponse:
+		kind = RESP_CTR_NETWORK_STATUS_LIST
 	default:
 		return nil, fmt.Errorf("unkonw response type")
 	}
