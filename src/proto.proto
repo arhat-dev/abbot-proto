@@ -25,10 +25,12 @@ import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 enum RequestType {
     _INVALID_REQUEST = 0;
 
-    REQ_ENSURE_CTR_NETWORK = 1;
-    REQ_DELETE_CTR_NETWORK = 2;
-    REQ_QUERY_CTR_NETWORK = 3;
-    REQ_UPDATE_CTR_NETWORK_CONFIG = 4;
+    REQ_ENSURE_CTR_NETWORK_CONFIG = 1;
+    
+    REQ_ENSURE_CTR_NETWORK = 2;
+    REQ_RESTORE_CTR_NETWORK = 3;
+    REQ_DELETE_CTR_NETWORK = 4;
+    REQ_QUERY_CTR_NETWORK = 5;
 }
 
 message Request {

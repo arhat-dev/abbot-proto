@@ -102,6 +102,14 @@ message ContainerNetworkEnsureRequest {
     map<string, string> cni_args = 4;  // [deprecated = true] (still widely used)
 }
 
+// Restore container network with previous container config
+message ContainerNetworkRestoreRequest {
+    // (required) container id
+    string container_id = 1;
+    // (required) pid to generate netns path
+    uint32 pid = 2;
+}
+
 message ContainerNetworkDeleteRequest {
     // (required) container id
     string container_id = 1;
@@ -112,7 +120,7 @@ message ContainerNetworkDeleteRequest {
 
 // Update CNI config by rendering the config template predefined in abbot's config
 // this Request containes all variables supported in the config template
-message ContainerNetworkConfigUpdateRequest {
+message ContainerNetworkConfigEnsureRequest {
     string ipv4_subnet = 1;
     string ipv6_subnet = 2;
 }
@@ -122,5 +130,12 @@ message ContainerNetworkQueryRequest {
 }
 
 message ContainerNetworkStatusResponse {
-    repeated InterfaceInfo interfaces = 1;
+    uint32 pid = 1;
+
+    repeated NetworkInterface interfaces = 2;
+}
+
+message ContainerNetworkStatusListResponse {
+    // key: container id
+    map<string, ContainerNetworkStatusResponse> container_networks = 1;
 }

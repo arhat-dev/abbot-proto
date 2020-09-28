@@ -39,16 +39,25 @@ PB_BIND(abbot_ContainerNetworkEnsureRequest, abbot_ContainerNetworkEnsureRequest
 PB_BIND(abbot_ContainerNetworkEnsureRequest_CniArgsEntry, abbot_ContainerNetworkEnsureRequest_CniArgsEntry, AUTO)
 
 
+PB_BIND(abbot_ContainerNetworkRestoreRequest, abbot_ContainerNetworkRestoreRequest, AUTO)
+
+
 PB_BIND(abbot_ContainerNetworkDeleteRequest, abbot_ContainerNetworkDeleteRequest, AUTO)
 
 
-PB_BIND(abbot_ContainerNetworkConfigUpdateRequest, abbot_ContainerNetworkConfigUpdateRequest, AUTO)
+PB_BIND(abbot_ContainerNetworkConfigEnsureRequest, abbot_ContainerNetworkConfigEnsureRequest, AUTO)
 
 
 PB_BIND(abbot_ContainerNetworkQueryRequest, abbot_ContainerNetworkQueryRequest, AUTO)
 
 
 PB_BIND(abbot_ContainerNetworkStatusResponse, abbot_ContainerNetworkStatusResponse, AUTO)
+
+
+PB_BIND(abbot_ContainerNetworkStatusListResponse, abbot_ContainerNetworkStatusListResponse, AUTO)
+
+
+PB_BIND(abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry, abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry, AUTO)
 
 
 

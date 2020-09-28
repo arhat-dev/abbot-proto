@@ -44,19 +44,19 @@ typedef struct _abbot_CNICapArgs_MacAddress {
     pb_callback_t mac;
 } abbot_CNICapArgs_MacAddress;
 
-typedef struct _abbot_ContainerNetworkConfigUpdateRequest {
+typedef struct _abbot_ContainerNetworkConfigEnsureRequest {
     pb_callback_t ipv4_subnet;
     pb_callback_t ipv6_subnet;
-} abbot_ContainerNetworkConfigUpdateRequest;
+} abbot_ContainerNetworkConfigEnsureRequest;
 
 typedef struct _abbot_ContainerNetworkEnsureRequest_CniArgsEntry {
     pb_callback_t key;
     pb_callback_t value;
 } abbot_ContainerNetworkEnsureRequest_CniArgsEntry;
 
-typedef struct _abbot_ContainerNetworkStatusResponse {
-    pb_callback_t interfaces;
-} abbot_ContainerNetworkStatusResponse;
+typedef struct _abbot_ContainerNetworkStatusListResponse {
+    pb_callback_t container_networks;
+} abbot_ContainerNetworkStatusListResponse;
 
 typedef struct _abbot_CNICapArgs_Bandwidth {
     int32_t ingress_rate;
@@ -88,6 +88,16 @@ typedef struct _abbot_ContainerNetworkQueryRequest {
     uint32_t pid;
 } abbot_ContainerNetworkQueryRequest;
 
+typedef struct _abbot_ContainerNetworkRestoreRequest {
+    pb_callback_t container_id;
+    uint32_t pid;
+} abbot_ContainerNetworkRestoreRequest;
+
+typedef struct _abbot_ContainerNetworkStatusResponse {
+    uint32_t pid;
+    pb_callback_t interfaces;
+} abbot_ContainerNetworkStatusResponse;
+
 typedef struct _abbot_CNICapArgs {
     pb_size_t which_option;
     union {
@@ -102,6 +112,12 @@ typedef struct _abbot_CNICapArgs {
     } option;
 } abbot_CNICapArgs;
 
+typedef struct _abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry {
+    pb_callback_t key;
+    bool has_value;
+    abbot_ContainerNetworkStatusResponse value;
+} abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry;
+
 
 /* Initializer values for message structs */
 #define abbot_CNICapArgs_init_default            {0, {abbot_CNICapArgs_PortMap_init_default}}
@@ -115,10 +131,13 @@ typedef struct _abbot_CNICapArgs {
 #define abbot_CNICapArgs_DeviceID_init_default   {{{NULL}, NULL}}
 #define abbot_ContainerNetworkEnsureRequest_init_default {{{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_init_default {{{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_ContainerNetworkRestoreRequest_init_default {{{NULL}, NULL}, 0}
 #define abbot_ContainerNetworkDeleteRequest_init_default {{{NULL}, NULL}, 0}
-#define abbot_ContainerNetworkConfigUpdateRequest_init_default {{{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_ContainerNetworkConfigEnsureRequest_init_default {{{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_ContainerNetworkQueryRequest_init_default {0}
-#define abbot_ContainerNetworkStatusResponse_init_default {{{NULL}, NULL}}
+#define abbot_ContainerNetworkStatusResponse_init_default {0, {{NULL}, NULL}}
+#define abbot_ContainerNetworkStatusListResponse_init_default {{{NULL}, NULL}}
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_init_default {{{NULL}, NULL}, false, abbot_ContainerNetworkStatusResponse_init_default}
 #define abbot_CNICapArgs_init_zero               {0, {abbot_CNICapArgs_PortMap_init_zero}}
 #define abbot_CNICapArgs_PortMap_init_zero       {0, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_CNICapArgs_Bandwidth_init_zero     {0, 0, 0, 0}
@@ -130,10 +149,13 @@ typedef struct _abbot_CNICapArgs {
 #define abbot_CNICapArgs_DeviceID_init_zero      {{{NULL}, NULL}}
 #define abbot_ContainerNetworkEnsureRequest_init_zero {{{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_init_zero {{{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_ContainerNetworkRestoreRequest_init_zero {{{NULL}, NULL}, 0}
 #define abbot_ContainerNetworkDeleteRequest_init_zero {{{NULL}, NULL}, 0}
-#define abbot_ContainerNetworkConfigUpdateRequest_init_zero {{{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_ContainerNetworkConfigEnsureRequest_init_zero {{{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_ContainerNetworkQueryRequest_init_zero {0}
-#define abbot_ContainerNetworkStatusResponse_init_zero {{{NULL}, NULL}}
+#define abbot_ContainerNetworkStatusResponse_init_zero {0, {{NULL}, NULL}}
+#define abbot_ContainerNetworkStatusListResponse_init_zero {{{NULL}, NULL}}
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_init_zero {{{NULL}, NULL}, false, abbot_ContainerNetworkStatusResponse_init_zero}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define abbot_CNICapArgs_DNSConfig_servers_tag   1
@@ -147,11 +169,11 @@ typedef struct _abbot_CNICapArgs {
 #define abbot_CNICapArgs_IPRange_gateway_tag     4
 #define abbot_CNICapArgs_InfinibandGUID_infiniband_guid_tag 1
 #define abbot_CNICapArgs_MacAddress_mac_tag      1
-#define abbot_ContainerNetworkConfigUpdateRequest_ipv4_subnet_tag 1
-#define abbot_ContainerNetworkConfigUpdateRequest_ipv6_subnet_tag 2
+#define abbot_ContainerNetworkConfigEnsureRequest_ipv4_subnet_tag 1
+#define abbot_ContainerNetworkConfigEnsureRequest_ipv6_subnet_tag 2
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_key_tag 1
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_value_tag 2
-#define abbot_ContainerNetworkStatusResponse_interfaces_tag 1
+#define abbot_ContainerNetworkStatusListResponse_container_networks_tag 1
 #define abbot_CNICapArgs_Bandwidth_ingress_rate_tag 1
 #define abbot_CNICapArgs_Bandwidth_ingress_burst_tag 2
 #define abbot_CNICapArgs_Bandwidth_egress_rate_tag 3
@@ -167,6 +189,10 @@ typedef struct _abbot_CNICapArgs {
 #define abbot_ContainerNetworkEnsureRequest_cap_args_tag 3
 #define abbot_ContainerNetworkEnsureRequest_cni_args_tag 4
 #define abbot_ContainerNetworkQueryRequest_pid_tag 1
+#define abbot_ContainerNetworkRestoreRequest_container_id_tag 1
+#define abbot_ContainerNetworkRestoreRequest_pid_tag 2
+#define abbot_ContainerNetworkStatusResponse_pid_tag 1
+#define abbot_ContainerNetworkStatusResponse_interfaces_tag 2
 #define abbot_CNICapArgs_port_map_arg_tag        1
 #define abbot_CNICapArgs_bandwidth_arg_tag       2
 #define abbot_CNICapArgs_ip_range_arg_tag        3
@@ -175,6 +201,8 @@ typedef struct _abbot_CNICapArgs {
 #define abbot_CNICapArgs_mac_address_arg_tag     6
 #define abbot_CNICapArgs_infiniband_guid_arg_tag 7
 #define abbot_CNICapArgs_device_id_arg_tag       8
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_key_tag 1
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_value_tag 2
 
 /* Struct field encoding specification for nanopb */
 #define abbot_CNICapArgs_FIELDLIST(X, a) \
@@ -264,17 +292,23 @@ X(a, CALLBACK, SINGULAR, STRING,   value,             2)
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_CALLBACK pb_default_field_callback
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_DEFAULT NULL
 
+#define abbot_ContainerNetworkRestoreRequest_FIELDLIST(X, a) \
+X(a, CALLBACK, SINGULAR, STRING,   container_id,      1) \
+X(a, STATIC,   SINGULAR, UINT32,   pid,               2)
+#define abbot_ContainerNetworkRestoreRequest_CALLBACK pb_default_field_callback
+#define abbot_ContainerNetworkRestoreRequest_DEFAULT NULL
+
 #define abbot_ContainerNetworkDeleteRequest_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   container_id,      1) \
 X(a, STATIC,   SINGULAR, UINT32,   pid,               2)
 #define abbot_ContainerNetworkDeleteRequest_CALLBACK pb_default_field_callback
 #define abbot_ContainerNetworkDeleteRequest_DEFAULT NULL
 
-#define abbot_ContainerNetworkConfigUpdateRequest_FIELDLIST(X, a) \
+#define abbot_ContainerNetworkConfigEnsureRequest_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   ipv4_subnet,       1) \
 X(a, CALLBACK, SINGULAR, STRING,   ipv6_subnet,       2)
-#define abbot_ContainerNetworkConfigUpdateRequest_CALLBACK pb_default_field_callback
-#define abbot_ContainerNetworkConfigUpdateRequest_DEFAULT NULL
+#define abbot_ContainerNetworkConfigEnsureRequest_CALLBACK pb_default_field_callback
+#define abbot_ContainerNetworkConfigEnsureRequest_DEFAULT NULL
 
 #define abbot_ContainerNetworkQueryRequest_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   pid,               1)
@@ -282,10 +316,24 @@ X(a, STATIC,   SINGULAR, UINT32,   pid,               1)
 #define abbot_ContainerNetworkQueryRequest_DEFAULT NULL
 
 #define abbot_ContainerNetworkStatusResponse_FIELDLIST(X, a) \
-X(a, CALLBACK, REPEATED, MESSAGE,  interfaces,        1)
+X(a, STATIC,   SINGULAR, UINT32,   pid,               1) \
+X(a, CALLBACK, REPEATED, MESSAGE,  interfaces,        2)
 #define abbot_ContainerNetworkStatusResponse_CALLBACK pb_default_field_callback
 #define abbot_ContainerNetworkStatusResponse_DEFAULT NULL
-#define abbot_ContainerNetworkStatusResponse_interfaces_MSGTYPE abbot_InterfaceInfo
+#define abbot_ContainerNetworkStatusResponse_interfaces_MSGTYPE abbot_NetworkInterface
+
+#define abbot_ContainerNetworkStatusListResponse_FIELDLIST(X, a) \
+X(a, CALLBACK, REPEATED, MESSAGE,  container_networks,   1)
+#define abbot_ContainerNetworkStatusListResponse_CALLBACK pb_default_field_callback
+#define abbot_ContainerNetworkStatusListResponse_DEFAULT NULL
+#define abbot_ContainerNetworkStatusListResponse_container_networks_MSGTYPE abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry
+
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_FIELDLIST(X, a) \
+X(a, CALLBACK, SINGULAR, STRING,   key,               1) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  value,             2)
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_CALLBACK pb_default_field_callback
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_DEFAULT NULL
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_value_MSGTYPE abbot_ContainerNetworkStatusResponse
 
 extern const pb_msgdesc_t abbot_CNICapArgs_msg;
 extern const pb_msgdesc_t abbot_CNICapArgs_PortMap_msg;
@@ -298,10 +346,13 @@ extern const pb_msgdesc_t abbot_CNICapArgs_InfinibandGUID_msg;
 extern const pb_msgdesc_t abbot_CNICapArgs_DeviceID_msg;
 extern const pb_msgdesc_t abbot_ContainerNetworkEnsureRequest_msg;
 extern const pb_msgdesc_t abbot_ContainerNetworkEnsureRequest_CniArgsEntry_msg;
+extern const pb_msgdesc_t abbot_ContainerNetworkRestoreRequest_msg;
 extern const pb_msgdesc_t abbot_ContainerNetworkDeleteRequest_msg;
-extern const pb_msgdesc_t abbot_ContainerNetworkConfigUpdateRequest_msg;
+extern const pb_msgdesc_t abbot_ContainerNetworkConfigEnsureRequest_msg;
 extern const pb_msgdesc_t abbot_ContainerNetworkQueryRequest_msg;
 extern const pb_msgdesc_t abbot_ContainerNetworkStatusResponse_msg;
+extern const pb_msgdesc_t abbot_ContainerNetworkStatusListResponse_msg;
+extern const pb_msgdesc_t abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
 #define abbot_CNICapArgs_fields &abbot_CNICapArgs_msg
@@ -315,10 +366,13 @@ extern const pb_msgdesc_t abbot_ContainerNetworkStatusResponse_msg;
 #define abbot_CNICapArgs_DeviceID_fields &abbot_CNICapArgs_DeviceID_msg
 #define abbot_ContainerNetworkEnsureRequest_fields &abbot_ContainerNetworkEnsureRequest_msg
 #define abbot_ContainerNetworkEnsureRequest_CniArgsEntry_fields &abbot_ContainerNetworkEnsureRequest_CniArgsEntry_msg
+#define abbot_ContainerNetworkRestoreRequest_fields &abbot_ContainerNetworkRestoreRequest_msg
 #define abbot_ContainerNetworkDeleteRequest_fields &abbot_ContainerNetworkDeleteRequest_msg
-#define abbot_ContainerNetworkConfigUpdateRequest_fields &abbot_ContainerNetworkConfigUpdateRequest_msg
+#define abbot_ContainerNetworkConfigEnsureRequest_fields &abbot_ContainerNetworkConfigEnsureRequest_msg
 #define abbot_ContainerNetworkQueryRequest_fields &abbot_ContainerNetworkQueryRequest_msg
 #define abbot_ContainerNetworkStatusResponse_fields &abbot_ContainerNetworkStatusResponse_msg
+#define abbot_ContainerNetworkStatusListResponse_fields &abbot_ContainerNetworkStatusListResponse_msg
+#define abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_fields &abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_msg
 
 /* Maximum encoded size of messages (where known) */
 /* abbot_CNICapArgs_size depends on runtime parameters */
@@ -332,10 +386,13 @@ extern const pb_msgdesc_t abbot_ContainerNetworkStatusResponse_msg;
 /* abbot_CNICapArgs_DeviceID_size depends on runtime parameters */
 /* abbot_ContainerNetworkEnsureRequest_size depends on runtime parameters */
 /* abbot_ContainerNetworkEnsureRequest_CniArgsEntry_size depends on runtime parameters */
+/* abbot_ContainerNetworkRestoreRequest_size depends on runtime parameters */
 /* abbot_ContainerNetworkDeleteRequest_size depends on runtime parameters */
-/* abbot_ContainerNetworkConfigUpdateRequest_size depends on runtime parameters */
+/* abbot_ContainerNetworkConfigEnsureRequest_size depends on runtime parameters */
 #define abbot_ContainerNetworkQueryRequest_size  6
 /* abbot_ContainerNetworkStatusResponse_size depends on runtime parameters */
+/* abbot_ContainerNetworkStatusListResponse_size depends on runtime parameters */
+/* abbot_ContainerNetworkStatusListResponse_ContainerNetworksEntry_size depends on runtime parameters */
 
 #ifdef __cplusplus
 } /* extern "C" */

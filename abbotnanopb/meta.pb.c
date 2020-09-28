@@ -6,7 +6,7 @@
 #error Regenerate this file with the current version of nanopb generator.
 #endif
 
-PB_BIND(abbot_InterfaceInfo, abbot_InterfaceInfo, AUTO)
+PB_BIND(abbot_NetworkInterface, abbot_NetworkInterface, AUTO)
 
 
 

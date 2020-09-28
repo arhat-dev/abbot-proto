@@ -14,34 +14,37 @@ extern "C" {
 #endif
 
 /* Struct definitions */
-typedef struct _abbot_InterfaceInfo {
+typedef struct _abbot_NetworkInterface {
     pb_callback_t name;
     pb_callback_t addresses;
-} abbot_InterfaceInfo;
+    pb_callback_t hardware_address;
+} abbot_NetworkInterface;
 
 
 /* Initializer values for message structs */
-#define abbot_InterfaceInfo_init_default         {{{NULL}, NULL}, {{NULL}, NULL}}
-#define abbot_InterfaceInfo_init_zero            {{{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_NetworkInterface_init_default      {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_NetworkInterface_init_zero         {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
-#define abbot_InterfaceInfo_name_tag             1
-#define abbot_InterfaceInfo_addresses_tag        2
+#define abbot_NetworkInterface_name_tag          1
+#define abbot_NetworkInterface_addresses_tag     2
+#define abbot_NetworkInterface_hardware_address_tag 3
 
 /* Struct field encoding specification for nanopb */
-#define abbot_InterfaceInfo_FIELDLIST(X, a) \
+#define abbot_NetworkInterface_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   name,              1) \
-X(a, CALLBACK, REPEATED, STRING,   addresses,         2)
-#define abbot_InterfaceInfo_CALLBACK pb_default_field_callback
-#define abbot_InterfaceInfo_DEFAULT NULL
+X(a, CALLBACK, REPEATED, STRING,   addresses,         2) \
+X(a, CALLBACK, SINGULAR, STRING,   hardware_address,   3)
+#define abbot_NetworkInterface_CALLBACK pb_default_field_callback
+#define abbot_NetworkInterface_DEFAULT NULL
 
-extern const pb_msgdesc_t abbot_InterfaceInfo_msg;
+extern const pb_msgdesc_t abbot_NetworkInterface_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
-#define abbot_InterfaceInfo_fields &abbot_InterfaceInfo_msg
+#define abbot_NetworkInterface_fields &abbot_NetworkInterface_msg
 
 /* Maximum encoded size of messages (where known) */
-/* abbot_InterfaceInfo_size depends on runtime parameters */
+/* abbot_NetworkInterface_size depends on runtime parameters */
 
 #ifdef __cplusplus
 } /* extern "C" */

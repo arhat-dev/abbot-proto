@@ -16,10 +16,11 @@ extern "C" {
 /* Enum definitions */
 typedef enum _abbot_RequestType {
     abbot_RequestType__INVALID_REQUEST = 0,
-    abbot_RequestType_REQ_ENSURE_CTR_NETWORK = 1,
-    abbot_RequestType_REQ_DELETE_CTR_NETWORK = 2,
-    abbot_RequestType_REQ_QUERY_CTR_NETWORK = 3,
-    abbot_RequestType_REQ_UPDATE_CTR_NETWORK_CONFIG = 4
+    abbot_RequestType_REQ_ENSURE_CTR_NETWORK_CONFIG = 1,
+    abbot_RequestType_REQ_ENSURE_CTR_NETWORK = 2,
+    abbot_RequestType_REQ_RESTORE_CTR_NETWORK = 3,
+    abbot_RequestType_REQ_DELETE_CTR_NETWORK = 4,
+    abbot_RequestType_REQ_QUERY_CTR_NETWORK = 5
 } abbot_RequestType;
 
 typedef enum _abbot_ResponseType {
@@ -42,8 +43,8 @@ typedef struct _abbot_Response {
 
 /* Helper constants for enums */
 #define _abbot_RequestType_MIN abbot_RequestType__INVALID_REQUEST
-#define _abbot_RequestType_MAX abbot_RequestType_REQ_UPDATE_CTR_NETWORK_CONFIG
-#define _abbot_RequestType_ARRAYSIZE ((abbot_RequestType)(abbot_RequestType_REQ_UPDATE_CTR_NETWORK_CONFIG+1))
+#define _abbot_RequestType_MAX abbot_RequestType_REQ_QUERY_CTR_NETWORK
+#define _abbot_RequestType_ARRAYSIZE ((abbot_RequestType)(abbot_RequestType_REQ_QUERY_CTR_NETWORK+1))
 
 #define _abbot_ResponseType_MIN abbot_ResponseType__INVALID_RESPONSE
 #define _abbot_ResponseType_MAX abbot_ResponseType_RESP_CTR_NETWORK_STATUS

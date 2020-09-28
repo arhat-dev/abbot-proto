@@ -30,6 +30,17 @@ func NewResponse(resp proto.Marshaler) (*Response, error) {
 	}, nil
 }
 
-func NewContainerNetworkStatusResponse(interfaces []*InterfaceInfo) *ContainerNetworkStatusResponse {
+func NewContainerNetworkStatusResponse(
+	pid uint32,
+	interfaces []*NetworkInterface,
+) *ContainerNetworkStatusResponse {
 	return &ContainerNetworkStatusResponse{Interfaces: interfaces}
+}
+
+func NewContainerNetworkStatusListResponse(
+	nets map[string]*ContainerNetworkStatusResponse,
+) *ContainerNetworkStatusListResponse {
+	return &ContainerNetworkStatusListResponse{
+		ContainerNetworks: nets,
+	}
 }
