@@ -57,8 +57,11 @@ func NewContainerNetworkRestoreRequest(
 	}
 }
 
-func NewContainerNetworkQueryRequest(pid uint32) *ContainerNetworkQueryRequest {
-	return &ContainerNetworkQueryRequest{Pid: pid}
+func NewContainerNetworkQueryRequest(containerID string, pid uint32) *ContainerNetworkQueryRequest {
+	return &ContainerNetworkQueryRequest{
+		ContainerId: containerID,
+		Pid:         pid,
+	}
 }
 
 func NewContainerNetworkDeleteRequest(

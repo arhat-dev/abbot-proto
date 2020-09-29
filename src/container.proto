@@ -126,7 +126,11 @@ message ContainerNetworkConfigEnsureRequest {
 }
 
 message ContainerNetworkQueryRequest {
-    uint32 pid = 1;
+    // (optional) conainer id of the infra container
+    string container_id = 1;
+
+    // (optional) pid of the infra container
+    uint32 pid = 2;
 }
 
 message ContainerNetworkStatusResponse {
