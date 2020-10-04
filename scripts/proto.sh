@@ -34,7 +34,8 @@ fix_pb_gen_json_name() {
 }
 
 _do_gen_proto_go() {
-  rm -rf ./abbotgopb/*.pb.go
+  rm abbotgopb/*.pb.go || true
+
   # shellcheck disable=SC2086
   protoc \
     -I"${GOPATH}/src" \
@@ -47,8 +48,23 @@ _do_gen_proto_go() {
   # fix_pb_gen_json_name ./abbotgopb/*.pb.go
 }
 
+_do_gen_proto_python() {
+  rm abbotpythonpb/*_pb*.py || true
+
+  # shellcheck disable=SC2086
+  pipenv run \
+  python -m grpc_tools.protoc \
+    -I"${GOPATH}/src" \
+    -I"${GOPATH}/src/github.com/gogo/protobuf/protobuf" \
+    -I"./src" \
+    --python_out "./abbotpythonpb" \
+    --grpc_python_out "./abbotpythonpb" \
+    ${PROTO_SOURCE}
+}
+
 _do_gen_proto_c() {
-  rm -rf ./abbotnanopb/*.pb.h ./abbotnanopb/*.pb.c
+  rm abbotnanopb/*.pb.c abbotnanopb/*.pb.h || true
+
   # shellcheck disable=SC2086
   pipenv run \
   python build/nanopb/generator/nanopb_generator.py \
@@ -59,7 +75,22 @@ _do_gen_proto_c() {
     -I"${GOPATH}/src/github.com/gogo/protobuf/protobuf" \
     -I"./src" \
     ${PROTO_SOURCE}
+
   rm -rf ./abbotnanopb/google ./abbotnanopb/github.com
+}
+
+_do_gen_proto_rust() {
+  rm abbotrustpb/*.pb.rs || true
+
+  # shellcheck disable=SC2086
+  pipenv run \
+  protoc \
+    -I ./src \
+    -I "${GOPATH}/src/github.com/gogo/protobuf/protobuf" \
+    -I "${GOPATH}/src" \
+    --plugin "protoc-gen-rust=$(pwd)/build/pb-jelly/pb-jelly-gen/codegen/codegen.py" \
+    --rust_out=./abbotrustpb \
+    ${PROTO_SOURCE}
 }
 
 CODE_LANG=$(printf "%s" "$@" | cut -d. -f3)

@@ -91,7 +91,7 @@ message ContainerNetworkEnsureRequest {
     // (required) pid will be used to form the netns path (/proc/<pid>/ns/net)
     uint32 pid = 2;
 
-    // if no args provided, this Request instructs abbot to retrieve container network 
+    // if no args provided, this Request instructs abbot to retrieve container network
     // config stored in its dataDir and restore the container network
 
     // (optional) capabilities args
