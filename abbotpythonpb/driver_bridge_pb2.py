@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x13\x64river_bridge.proto\x12\x05\x61\x62\x62ot\"\xcd\x01\n\x0c\x44riverBridge\x12\r\n\x05\x41lias\x18\x01 \x01(\t\x12\x0e\n\x06TxQLen\x18\x02 \x01(\x05\x12\x0f\n\x07Promisc\x18\x03 \x01(\x08\x12\x0f\n\x07Hairpin\x18\x0c \x01(\x08\x12\r\n\x05Guard\x18\r \x01(\x08\x12\x11\n\tFastLeave\x18\x0e \x01(\x08\x12\x11\n\tRootBlock\x18\x0f \x01(\x08\x12\x10\n\x08Learning\x18\x10 \x01(\x08\x12\r\n\x05\x46lood\x18\x11 \x01(\x08\x12\x10\n\x08ProxyArp\x18\x12 \x01(\x08\x12\x14\n\x0cProxyArpWiFi\x18\x13 \x01(\x08\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\x13\x64river_bridge.proto\x12\x05\x61\x62\x62ot\"\xd7\x01\n\x0c\x44riverBridge\x12\r\n\x05\x61lias\x18\x01 \x01(\t\x12\x14\n\x0ctx_queue_len\x18\x02 \x01(\x05\x12\x0f\n\x07promisc\x18\x03 \x01(\x08\x12\x0f\n\x07hairpin\x18\x0c \x01(\x08\x12\r\n\x05huard\x18\r \x01(\x08\x12\x11\n\tfastLeave\x18\x0e \x01(\x08\x12\x12\n\nroot_block\x18\x0f \x01(\x08\x12\x10\n\x08learning\x18\x10 \x01(\x08\x12\r\n\x05\x66lood\x18\x11 \x01(\x08\x12\x11\n\tproxy_arp\x18\x12 \x01(\x08\x12\x16\n\x0eproxy_arp_wifi\x18\x13 \x01(\x08\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
 )
 
 
@@ -34,77 +34,77 @@ _DRIVERBRIDGE = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='Alias', full_name='abbot.DriverBridge.Alias', index=0,
+      name='alias', full_name='abbot.DriverBridge.alias', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='TxQLen', full_name='abbot.DriverBridge.TxQLen', index=1,
+      name='tx_queue_len', full_name='abbot.DriverBridge.tx_queue_len', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Promisc', full_name='abbot.DriverBridge.Promisc', index=2,
+      name='promisc', full_name='abbot.DriverBridge.promisc', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Hairpin', full_name='abbot.DriverBridge.Hairpin', index=3,
+      name='hairpin', full_name='abbot.DriverBridge.hairpin', index=3,
       number=12, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Guard', full_name='abbot.DriverBridge.Guard', index=4,
+      name='huard', full_name='abbot.DriverBridge.huard', index=4,
       number=13, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='FastLeave', full_name='abbot.DriverBridge.FastLeave', index=5,
+      name='fastLeave', full_name='abbot.DriverBridge.fastLeave', index=5,
       number=14, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='RootBlock', full_name='abbot.DriverBridge.RootBlock', index=6,
+      name='root_block', full_name='abbot.DriverBridge.root_block', index=6,
       number=15, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Learning', full_name='abbot.DriverBridge.Learning', index=7,
+      name='learning', full_name='abbot.DriverBridge.learning', index=7,
       number=16, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='Flood', full_name='abbot.DriverBridge.Flood', index=8,
+      name='flood', full_name='abbot.DriverBridge.flood', index=8,
       number=17, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='ProxyArp', full_name='abbot.DriverBridge.ProxyArp', index=9,
+      name='proxy_arp', full_name='abbot.DriverBridge.proxy_arp', index=9,
       number=18, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='ProxyArpWiFi', full_name='abbot.DriverBridge.ProxyArpWiFi', index=10,
+      name='proxy_arp_wifi', full_name='abbot.DriverBridge.proxy_arp_wifi', index=10,
       number=19, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -123,7 +123,7 @@ _DRIVERBRIDGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=31,
-  serialized_end=236,
+  serialized_end=246,
 )
 
 DESCRIPTOR.message_types_by_name['DriverBridge'] = _DRIVERBRIDGE

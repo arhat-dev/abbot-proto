@@ -25,18 +25,18 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type DriverBridge struct {
-	Alias   string `protobuf:"bytes,1,opt,name=Alias,proto3" json:"Alias,omitempty"`
-	TxQLen  int32  `protobuf:"varint,2,opt,name=TxQLen,proto3" json:"TxQLen,omitempty"`
-	Promisc bool   `protobuf:"varint,3,opt,name=Promisc,proto3" json:"Promisc,omitempty"`
+	Alias      string `protobuf:"bytes,1,opt,name=alias,proto3" json:"alias,omitempty"`
+	TxQueueLen int32  `protobuf:"varint,2,opt,name=tx_queue_len,json=txQueueLen,proto3" json:"tx_queue_len,omitempty"`
+	Promisc    bool   `protobuf:"varint,3,opt,name=promisc,proto3" json:"promisc,omitempty"`
 	// bridge options
-	Hairpin      bool `protobuf:"varint,12,opt,name=Hairpin,proto3" json:"Hairpin,omitempty"`
-	Guard        bool `protobuf:"varint,13,opt,name=Guard,proto3" json:"Guard,omitempty"`
-	FastLeave    bool `protobuf:"varint,14,opt,name=FastLeave,proto3" json:"FastLeave,omitempty"`
-	RootBlock    bool `protobuf:"varint,15,opt,name=RootBlock,proto3" json:"RootBlock,omitempty"`
-	Learning     bool `protobuf:"varint,16,opt,name=Learning,proto3" json:"Learning,omitempty"`
-	Flood        bool `protobuf:"varint,17,opt,name=Flood,proto3" json:"Flood,omitempty"`
-	ProxyArp     bool `protobuf:"varint,18,opt,name=ProxyArp,proto3" json:"ProxyArp,omitempty"`
-	ProxyArpWiFi bool `protobuf:"varint,19,opt,name=ProxyArpWiFi,proto3" json:"ProxyArpWiFi,omitempty"`
+	Hairpin      bool `protobuf:"varint,12,opt,name=hairpin,proto3" json:"hairpin,omitempty"`
+	Huard        bool `protobuf:"varint,13,opt,name=huard,proto3" json:"huard,omitempty"`
+	FastLeave    bool `protobuf:"varint,14,opt,name=fastLeave,proto3" json:"fastLeave,omitempty"`
+	RootBlock    bool `protobuf:"varint,15,opt,name=root_block,json=rootBlock,proto3" json:"root_block,omitempty"`
+	Learning     bool `protobuf:"varint,16,opt,name=learning,proto3" json:"learning,omitempty"`
+	Flood        bool `protobuf:"varint,17,opt,name=flood,proto3" json:"flood,omitempty"`
+	ProxyArp     bool `protobuf:"varint,18,opt,name=proxy_arp,json=proxyArp,proto3" json:"proxy_arp,omitempty"`
+	ProxyArpWifi bool `protobuf:"varint,19,opt,name=proxy_arp_wifi,json=proxyArpWifi,proto3" json:"proxy_arp_wifi,omitempty"`
 }
 
 func (m *DriverBridge) Reset()      { *m = DriverBridge{} }
@@ -78,9 +78,9 @@ func (m *DriverBridge) GetAlias() string {
 	return ""
 }
 
-func (m *DriverBridge) GetTxQLen() int32 {
+func (m *DriverBridge) GetTxQueueLen() int32 {
 	if m != nil {
-		return m.TxQLen
+		return m.TxQueueLen
 	}
 	return 0
 }
@@ -99,9 +99,9 @@ func (m *DriverBridge) GetHairpin() bool {
 	return false
 }
 
-func (m *DriverBridge) GetGuard() bool {
+func (m *DriverBridge) GetHuard() bool {
 	if m != nil {
-		return m.Guard
+		return m.Huard
 	}
 	return false
 }
@@ -141,9 +141,9 @@ func (m *DriverBridge) GetProxyArp() bool {
 	return false
 }
 
-func (m *DriverBridge) GetProxyArpWiFi() bool {
+func (m *DriverBridge) GetProxyArpWifi() bool {
 	if m != nil {
-		return m.ProxyArpWiFi
+		return m.ProxyArpWifi
 	}
 	return false
 }
@@ -155,28 +155,29 @@ func init() {
 func init() { proto.RegisterFile("driver_bridge.proto", fileDescriptor_9822f4d046d89679) }
 
 var fileDescriptor_9822f4d046d89679 = []byte{
-	// 322 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x91, 0x4f, 0x4e, 0x3a, 0x31,
-	0x14, 0x80, 0x5b, 0x7e, 0x81, 0x1f, 0x34, 0xf8, 0xaf, 0x18, 0xf3, 0x62, 0xcc, 0x93, 0xb0, 0x62,
-	0x23, 0x2e, 0x3c, 0x01, 0xc4, 0xa0, 0x0b, 0x16, 0x38, 0xd1, 0x98, 0xb8, 0x31, 0x1d, 0xa6, 0xc1,
-	0x46, 0x9c, 0x4e, 0xca, 0x48, 0x70, 0xe7, 0x11, 0x3c, 0x86, 0x07, 0xf0, 0x10, 0x2e, 0x59, 0xb2,
-	0x94, 0xb2, 0x71, 0xc9, 0x11, 0xcc, 0xb4, 0x0c, 0xc6, 0xdd, 0xfb, 0xbe, 0x2f, 0x2f, 0x2f, 0x69,
-	0x59, 0x2d, 0x32, 0x6a, 0x22, 0xcd, 0x7d, 0x68, 0x54, 0x34, 0x94, 0xad, 0xc4, 0xe8, 0x54, 0xf3,
-	0xa2, 0x08, 0x43, 0x9d, 0x36, 0x3e, 0x0a, 0xac, 0x7a, 0xee, 0x72, 0xc7, 0x55, 0xbe, 0xcf, 0x8a,
-	0xed, 0x91, 0x12, 0x63, 0xa0, 0x75, 0xda, 0xac, 0x04, 0x1e, 0xf8, 0x01, 0x2b, 0x5d, 0x4f, 0xaf,
-	0x7a, 0x32, 0x86, 0x42, 0x9d, 0x36, 0x8b, 0xc1, 0x9a, 0x38, 0xb0, 0xff, 0x7d, 0xa3, 0x9f, 0xd4,
-	0x78, 0x00, 0xff, 0xea, 0xb4, 0x59, 0x0e, 0x72, 0xcc, 0xca, 0xa5, 0x50, 0x26, 0x51, 0x31, 0x54,
-	0x7d, 0x59, 0x63, 0x76, 0xe1, 0xe2, 0x59, 0x98, 0x08, 0xb6, 0x9c, 0xf7, 0xc0, 0x8f, 0x58, 0xa5,
-	0x2b, 0xc6, 0x69, 0x4f, 0x8a, 0x89, 0x84, 0x6d, 0x57, 0x7e, 0x45, 0x56, 0x03, 0xad, 0xd3, 0xce,
-	0x48, 0x0f, 0x1e, 0x61, 0xc7, 0xd7, 0x8d, 0xe0, 0x87, 0xac, 0xdc, 0x93, 0xc2, 0xc4, 0x2a, 0x1e,
-	0xc2, 0xae, 0x8b, 0x1b, 0xce, 0xae, 0x75, 0x47, 0x5a, 0x47, 0xb0, 0xe7, 0xaf, 0x39, 0xc8, 0x36,
-	0xfa, 0x46, 0x4f, 0x5f, 0xda, 0x26, 0x01, 0xee, 0x37, 0x72, 0xe6, 0x0d, 0x56, 0xcd, 0xe7, 0x5b,
-	0xd5, 0x55, 0x50, 0x73, 0xfd, 0x8f, 0xeb, 0xdc, 0xcc, 0x16, 0x48, 0xe6, 0x0b, 0x24, 0xab, 0x05,
-	0xd2, 0x57, 0x8b, 0xf4, 0xdd, 0x22, 0xfd, 0xb4, 0x48, 0x67, 0x16, 0xe9, 0x97, 0x45, 0xfa, 0x6d,
-	0x91, 0xac, 0x2c, 0xd2, 0xb7, 0x25, 0x92, 0xd9, 0x12, 0xc9, 0x7c, 0x89, 0xe4, 0xee, 0x58, 0x98,
-	0x07, 0x91, 0xb6, 0x22, 0x39, 0x39, 0x75, 0xaf, 0x7f, 0xe2, 0xbe, 0xc2, 0xcf, 0x43, 0x9d, 0x84,
-	0x61, 0xc9, 0x89, 0xb3, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xba, 0x4e, 0x52, 0x3b, 0xb2, 0x01,
-	0x00, 0x00,
+	// 341 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x44, 0x91, 0x3f, 0x4f, 0x3a, 0x31,
+	0x18, 0x80, 0xaf, 0xfc, 0xc2, 0x4f, 0x68, 0x4e, 0xd4, 0xe2, 0xd0, 0xf8, 0xa7, 0x5e, 0x8c, 0x03,
+	0x8b, 0x38, 0xf8, 0x09, 0x24, 0x8e, 0x2c, 0x92, 0x18, 0x13, 0x97, 0x4b, 0x8f, 0xeb, 0x41, 0xe3,
+	0x79, 0xad, 0x2f, 0x05, 0x71, 0xf3, 0x23, 0xf8, 0x31, 0xfc, 0x1c, 0x4e, 0x8e, 0x8c, 0x8c, 0x52,
+	0x16, 0x47, 0x3e, 0x82, 0xb9, 0x56, 0x70, 0xeb, 0xf3, 0x3c, 0x6f, 0xf3, 0x0e, 0x2f, 0x6e, 0xa6,
+	0x20, 0x27, 0x02, 0xe2, 0x04, 0x64, 0x3a, 0x10, 0x6d, 0x0d, 0xca, 0x28, 0x52, 0xe5, 0x49, 0xa2,
+	0xcc, 0xe9, 0x47, 0x05, 0x87, 0xd7, 0x2e, 0x77, 0x5c, 0x25, 0xfb, 0xb8, 0xca, 0x73, 0xc9, 0x47,
+	0x14, 0x45, 0xa8, 0x55, 0xef, 0x79, 0x20, 0x11, 0x0e, 0xcd, 0x34, 0x7e, 0x1a, 0x8b, 0xb1, 0x88,
+	0x73, 0x51, 0xd0, 0x4a, 0x84, 0x5a, 0xd5, 0x1e, 0x36, 0xd3, 0x9b, 0x52, 0x75, 0x45, 0x41, 0x28,
+	0xde, 0xd2, 0xa0, 0x1e, 0xe5, 0xa8, 0x4f, 0xff, 0x45, 0xa8, 0x55, 0xeb, 0xad, 0xb1, 0x2c, 0x43,
+	0x2e, 0x41, 0xcb, 0x82, 0x86, 0xbe, 0xfc, 0x62, 0xb9, 0x6b, 0x38, 0xe6, 0x90, 0xd2, 0x6d, 0xe7,
+	0x3d, 0x90, 0x23, 0x5c, 0xcf, 0xf8, 0xc8, 0x74, 0x05, 0x9f, 0x08, 0xda, 0x70, 0xe5, 0x4f, 0x90,
+	0x63, 0x8c, 0x41, 0x29, 0x13, 0x27, 0xb9, 0xea, 0x3f, 0xd0, 0x1d, 0x9f, 0x4b, 0xd3, 0x29, 0x05,
+	0x39, 0xc0, 0xb5, 0x5c, 0x70, 0x28, 0x64, 0x31, 0xa0, 0xbb, 0x2e, 0x6e, 0xb8, 0x5c, 0x97, 0xe5,
+	0x4a, 0xa5, 0x74, 0xcf, 0xaf, 0x73, 0x40, 0x0e, 0x71, 0x5d, 0x83, 0x9a, 0xbe, 0xc4, 0x1c, 0x34,
+	0x25, 0xfe, 0x8b, 0x13, 0x57, 0xa0, 0xc9, 0x19, 0x6e, 0x6c, 0x62, 0xfc, 0x2c, 0x33, 0x49, 0x9b,
+	0x6e, 0x22, 0x5c, 0x4f, 0xdc, 0xc9, 0x4c, 0x76, 0x6e, 0x67, 0x0b, 0x16, 0xcc, 0x17, 0x2c, 0x58,
+	0x2d, 0x18, 0x7a, 0xb5, 0x0c, 0xbd, 0x5b, 0x86, 0x3e, 0x2d, 0x43, 0x33, 0xcb, 0xd0, 0x97, 0x65,
+	0xe8, 0xdb, 0xb2, 0x60, 0x65, 0x19, 0x7a, 0x5b, 0xb2, 0x60, 0xb6, 0x64, 0xc1, 0x7c, 0xc9, 0x82,
+	0xfb, 0x13, 0x0e, 0x43, 0x6e, 0xda, 0xa9, 0x98, 0x5c, 0xb8, 0x5b, 0x9c, 0xbb, 0xc3, 0xf8, 0xf7,
+	0x40, 0xe9, 0x24, 0xf9, 0xef, 0xc4, 0xe5, 0x4f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x4d, 0x7e, 0x44,
+	0xa4, 0xc0, 0x01, 0x00, 0x00,
 }
 
 func (this *DriverBridge) Equal(that interface{}) bool {
@@ -201,7 +202,7 @@ func (this *DriverBridge) Equal(that interface{}) bool {
 	if this.Alias != that1.Alias {
 		return false
 	}
-	if this.TxQLen != that1.TxQLen {
+	if this.TxQueueLen != that1.TxQueueLen {
 		return false
 	}
 	if this.Promisc != that1.Promisc {
@@ -210,7 +211,7 @@ func (this *DriverBridge) Equal(that interface{}) bool {
 	if this.Hairpin != that1.Hairpin {
 		return false
 	}
-	if this.Guard != that1.Guard {
+	if this.Huard != that1.Huard {
 		return false
 	}
 	if this.FastLeave != that1.FastLeave {
@@ -228,7 +229,7 @@ func (this *DriverBridge) Equal(that interface{}) bool {
 	if this.ProxyArp != that1.ProxyArp {
 		return false
 	}
-	if this.ProxyArpWiFi != that1.ProxyArpWiFi {
+	if this.ProxyArpWifi != that1.ProxyArpWifi {
 		return false
 	}
 	return true
@@ -240,16 +241,16 @@ func (this *DriverBridge) GoString() string {
 	s := make([]string, 0, 15)
 	s = append(s, "&abbotgopb.DriverBridge{")
 	s = append(s, "Alias: "+fmt.Sprintf("%#v", this.Alias)+",\n")
-	s = append(s, "TxQLen: "+fmt.Sprintf("%#v", this.TxQLen)+",\n")
+	s = append(s, "TxQueueLen: "+fmt.Sprintf("%#v", this.TxQueueLen)+",\n")
 	s = append(s, "Promisc: "+fmt.Sprintf("%#v", this.Promisc)+",\n")
 	s = append(s, "Hairpin: "+fmt.Sprintf("%#v", this.Hairpin)+",\n")
-	s = append(s, "Guard: "+fmt.Sprintf("%#v", this.Guard)+",\n")
+	s = append(s, "Huard: "+fmt.Sprintf("%#v", this.Huard)+",\n")
 	s = append(s, "FastLeave: "+fmt.Sprintf("%#v", this.FastLeave)+",\n")
 	s = append(s, "RootBlock: "+fmt.Sprintf("%#v", this.RootBlock)+",\n")
 	s = append(s, "Learning: "+fmt.Sprintf("%#v", this.Learning)+",\n")
 	s = append(s, "Flood: "+fmt.Sprintf("%#v", this.Flood)+",\n")
 	s = append(s, "ProxyArp: "+fmt.Sprintf("%#v", this.ProxyArp)+",\n")
-	s = append(s, "ProxyArpWiFi: "+fmt.Sprintf("%#v", this.ProxyArpWiFi)+",\n")
+	s = append(s, "ProxyArpWifi: "+fmt.Sprintf("%#v", this.ProxyArpWifi)+",\n")
 	s = append(s, "}")
 	return strings.Join(s, "")
 }
@@ -281,9 +282,9 @@ func (m *DriverBridge) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	_ = i
 	var l int
 	_ = l
-	if m.ProxyArpWiFi {
+	if m.ProxyArpWifi {
 		i--
-		if m.ProxyArpWiFi {
+		if m.ProxyArpWifi {
 			dAtA[i] = 1
 		} else {
 			dAtA[i] = 0
@@ -349,9 +350,9 @@ func (m *DriverBridge) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x70
 	}
-	if m.Guard {
+	if m.Huard {
 		i--
-		if m.Guard {
+		if m.Huard {
 			dAtA[i] = 1
 		} else {
 			dAtA[i] = 0
@@ -379,8 +380,8 @@ func (m *DriverBridge) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x18
 	}
-	if m.TxQLen != 0 {
-		i = encodeVarintDriverBridge(dAtA, i, uint64(m.TxQLen))
+	if m.TxQueueLen != 0 {
+		i = encodeVarintDriverBridge(dAtA, i, uint64(m.TxQueueLen))
 		i--
 		dAtA[i] = 0x10
 	}
@@ -415,8 +416,8 @@ func (m *DriverBridge) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovDriverBridge(uint64(l))
 	}
-	if m.TxQLen != 0 {
-		n += 1 + sovDriverBridge(uint64(m.TxQLen))
+	if m.TxQueueLen != 0 {
+		n += 1 + sovDriverBridge(uint64(m.TxQueueLen))
 	}
 	if m.Promisc {
 		n += 2
@@ -424,7 +425,7 @@ func (m *DriverBridge) Size() (n int) {
 	if m.Hairpin {
 		n += 2
 	}
-	if m.Guard {
+	if m.Huard {
 		n += 2
 	}
 	if m.FastLeave {
@@ -442,7 +443,7 @@ func (m *DriverBridge) Size() (n int) {
 	if m.ProxyArp {
 		n += 3
 	}
-	if m.ProxyArpWiFi {
+	if m.ProxyArpWifi {
 		n += 3
 	}
 	return n
@@ -460,16 +461,16 @@ func (this *DriverBridge) String() string {
 	}
 	s := strings.Join([]string{`&DriverBridge{`,
 		`Alias:` + fmt.Sprintf("%v", this.Alias) + `,`,
-		`TxQLen:` + fmt.Sprintf("%v", this.TxQLen) + `,`,
+		`TxQueueLen:` + fmt.Sprintf("%v", this.TxQueueLen) + `,`,
 		`Promisc:` + fmt.Sprintf("%v", this.Promisc) + `,`,
 		`Hairpin:` + fmt.Sprintf("%v", this.Hairpin) + `,`,
-		`Guard:` + fmt.Sprintf("%v", this.Guard) + `,`,
+		`Huard:` + fmt.Sprintf("%v", this.Huard) + `,`,
 		`FastLeave:` + fmt.Sprintf("%v", this.FastLeave) + `,`,
 		`RootBlock:` + fmt.Sprintf("%v", this.RootBlock) + `,`,
 		`Learning:` + fmt.Sprintf("%v", this.Learning) + `,`,
 		`Flood:` + fmt.Sprintf("%v", this.Flood) + `,`,
 		`ProxyArp:` + fmt.Sprintf("%v", this.ProxyArp) + `,`,
-		`ProxyArpWiFi:` + fmt.Sprintf("%v", this.ProxyArpWiFi) + `,`,
+		`ProxyArpWifi:` + fmt.Sprintf("%v", this.ProxyArpWifi) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -545,9 +546,9 @@ func (m *DriverBridge) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field TxQLen", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field TxQueueLen", wireType)
 			}
-			m.TxQLen = 0
+			m.TxQueueLen = 0
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowDriverBridge
@@ -557,7 +558,7 @@ func (m *DriverBridge) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.TxQLen |= int32(b&0x7F) << shift
+				m.TxQueueLen |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -604,7 +605,7 @@ func (m *DriverBridge) Unmarshal(dAtA []byte) error {
 			m.Hairpin = bool(v != 0)
 		case 13:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Guard", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Huard", wireType)
 			}
 			var v int
 			for shift := uint(0); ; shift += 7 {
@@ -621,7 +622,7 @@ func (m *DriverBridge) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-			m.Guard = bool(v != 0)
+			m.Huard = bool(v != 0)
 		case 14:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field FastLeave", wireType)
@@ -724,7 +725,7 @@ func (m *DriverBridge) Unmarshal(dAtA []byte) error {
 			m.ProxyArp = bool(v != 0)
 		case 19:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ProxyArpWiFi", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field ProxyArpWifi", wireType)
 			}
 			var v int
 			for shift := uint(0); ; shift += 7 {
@@ -741,7 +742,7 @@ func (m *DriverBridge) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-			m.ProxyArpWiFi = bool(v != 0)
+			m.ProxyArpWifi = bool(v != 0)
 		default:
 			iNdEx = preIndex
 			skippy, err := skipDriverBridge(dAtA[iNdEx:])

@@ -21,17 +21,17 @@ package abbot;
 option go_package = "arhat.dev/abbot-proto/abbotgopb";
 
 message DriverBridge {
-  string Alias = 1;
-  int32 TxQLen = 2;
-  bool Promisc = 3;
+  string alias = 1;
+  int32 tx_queue_len = 2;
+  bool promisc = 3;
 
   // bridge options
-  bool Hairpin = 12;
-  bool Guard = 13;
-  bool FastLeave = 14;
-  bool RootBlock = 15;
-  bool Learning = 16;
-  bool Flood = 17;
-  bool ProxyArp = 18;
-  bool ProxyArpWiFi = 19;
+  bool hairpin = 12;
+  bool huard = 13;
+  bool fastLeave = 14;
+  bool root_block = 15;
+  bool learning = 16;
+  bool flood = 17;
+  bool proxy_arp = 18;
+  bool proxy_arp_wifi = 19;
 }

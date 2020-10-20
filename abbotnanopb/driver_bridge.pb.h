@@ -15,17 +15,17 @@ extern "C" {
 
 /* Struct definitions */
 typedef struct _abbot_DriverBridge {
-    pb_callback_t Alias;
-    int32_t TxQLen;
-    bool Promisc;
-    bool Hairpin;
-    bool Guard;
-    bool FastLeave;
-    bool RootBlock;
-    bool Learning;
-    bool Flood;
-    bool ProxyArp;
-    bool ProxyArpWiFi;
+    pb_callback_t alias;
+    int32_t tx_queue_len;
+    bool promisc;
+    bool hairpin;
+    bool huard;
+    bool fastLeave;
+    bool root_block;
+    bool learning;
+    bool flood;
+    bool proxy_arp;
+    bool proxy_arp_wifi;
 } abbot_DriverBridge;
 
 
@@ -34,31 +34,31 @@ typedef struct _abbot_DriverBridge {
 #define abbot_DriverBridge_init_zero             {{{NULL}, NULL}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 /* Field tags (for use in manual encoding/decoding) */
-#define abbot_DriverBridge_Alias_tag             1
-#define abbot_DriverBridge_TxQLen_tag            2
-#define abbot_DriverBridge_Promisc_tag           3
-#define abbot_DriverBridge_Hairpin_tag           12
-#define abbot_DriverBridge_Guard_tag             13
-#define abbot_DriverBridge_FastLeave_tag         14
-#define abbot_DriverBridge_RootBlock_tag         15
-#define abbot_DriverBridge_Learning_tag          16
-#define abbot_DriverBridge_Flood_tag             17
-#define abbot_DriverBridge_ProxyArp_tag          18
-#define abbot_DriverBridge_ProxyArpWiFi_tag      19
+#define abbot_DriverBridge_alias_tag             1
+#define abbot_DriverBridge_tx_queue_len_tag      2
+#define abbot_DriverBridge_promisc_tag           3
+#define abbot_DriverBridge_hairpin_tag           12
+#define abbot_DriverBridge_huard_tag             13
+#define abbot_DriverBridge_fastLeave_tag         14
+#define abbot_DriverBridge_root_block_tag        15
+#define abbot_DriverBridge_learning_tag          16
+#define abbot_DriverBridge_flood_tag             17
+#define abbot_DriverBridge_proxy_arp_tag         18
+#define abbot_DriverBridge_proxy_arp_wifi_tag    19
 
 /* Struct field encoding specification for nanopb */
 #define abbot_DriverBridge_FIELDLIST(X, a) \
-X(a, CALLBACK, SINGULAR, STRING,   Alias,             1) \
-X(a, STATIC,   SINGULAR, INT32,    TxQLen,            2) \
-X(a, STATIC,   SINGULAR, BOOL,     Promisc,           3) \
-X(a, STATIC,   SINGULAR, BOOL,     Hairpin,          12) \
-X(a, STATIC,   SINGULAR, BOOL,     Guard,            13) \
-X(a, STATIC,   SINGULAR, BOOL,     FastLeave,        14) \
-X(a, STATIC,   SINGULAR, BOOL,     RootBlock,        15) \
-X(a, STATIC,   SINGULAR, BOOL,     Learning,         16) \
-X(a, STATIC,   SINGULAR, BOOL,     Flood,            17) \
-X(a, STATIC,   SINGULAR, BOOL,     ProxyArp,         18) \
-X(a, STATIC,   SINGULAR, BOOL,     ProxyArpWiFi,     19)
+X(a, CALLBACK, SINGULAR, STRING,   alias,             1) \
+X(a, STATIC,   SINGULAR, INT32,    tx_queue_len,      2) \
+X(a, STATIC,   SINGULAR, BOOL,     promisc,           3) \
+X(a, STATIC,   SINGULAR, BOOL,     hairpin,          12) \
+X(a, STATIC,   SINGULAR, BOOL,     huard,            13) \
+X(a, STATIC,   SINGULAR, BOOL,     fastLeave,        14) \
+X(a, STATIC,   SINGULAR, BOOL,     root_block,       15) \
+X(a, STATIC,   SINGULAR, BOOL,     learning,         16) \
+X(a, STATIC,   SINGULAR, BOOL,     flood,            17) \
+X(a, STATIC,   SINGULAR, BOOL,     proxy_arp,        18) \
+X(a, STATIC,   SINGULAR, BOOL,     proxy_arp_wifi,   19)
 #define abbot_DriverBridge_CALLBACK pb_default_field_callback
 #define abbot_DriverBridge_DEFAULT NULL
 
