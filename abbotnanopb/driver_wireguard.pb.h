@@ -18,7 +18,7 @@ typedef struct _abbot_DriverWireguard_Peer {
     pb_callback_t public_key;
     pb_callback_t pre_shared_key;
     pb_callback_t endpoint;
-    int64_t persistent_keepalive_interval;
+    int32_t persistent_keepalive_interval;
     pb_callback_t allowed_ips;
 } abbot_DriverWireguard_Peer;
 
@@ -77,7 +77,7 @@ X(a, CALLBACK, REPEATED, MESSAGE,  peers,             5)
 X(a, CALLBACK, SINGULAR, STRING,   public_key,        1) \
 X(a, CALLBACK, SINGULAR, STRING,   pre_shared_key,    2) \
 X(a, CALLBACK, SINGULAR, STRING,   endpoint,          3) \
-X(a, STATIC,   SINGULAR, INT64,    persistent_keepalive_interval,   4) \
+X(a, STATIC,   SINGULAR, INT32,    persistent_keepalive_interval,   4) \
 X(a, CALLBACK, REPEATED, STRING,   allowed_ips,       5)
 #define abbot_DriverWireguard_Peer_CALLBACK pb_default_field_callback
 #define abbot_DriverWireguard_Peer_DEFAULT NULL

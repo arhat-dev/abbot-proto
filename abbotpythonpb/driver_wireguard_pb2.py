@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x16\x64river_wireguard.proto\x12\x05\x61\x62\x62ot\"\xf0\x02\n\x0f\x44riverWireguard\x12\x11\n\tlog_level\x18\x01 \x01(\t\x12\x13\n\x0bprivate_key\x18\x02 \x01(\t\x12\x13\n\x0blisten_port\x18\x03 \x01(\x05\x12/\n\x07routing\x18\x04 \x01(\x0b\x32\x1e.abbot.DriverWireguard.Routing\x12*\n\x05peers\x18\x05 \x03(\x0b\x32\x1b.abbot.DriverWireguard.Peer\x1a\x80\x01\n\x04Peer\x12\x12\n\npublic_key\x18\x01 \x01(\t\x12\x16\n\x0epre_shared_key\x18\x02 \x01(\t\x12\x10\n\x08\x65ndpoint\x18\x03 \x01(\t\x12%\n\x1dpersistent_keepalive_interval\x18\x04 \x01(\x03\x12\x13\n\x0b\x61llowed_ips\x18\x05 \x03(\t\x1a@\n\x07Routing\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12\r\n\x05table\x18\x02 \x01(\x05\x12\x15\n\rfirewall_mark\x18\x03 \x01(\x05\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\x16\x64river_wireguard.proto\x12\x05\x61\x62\x62ot\"\xf0\x02\n\x0f\x44riverWireguard\x12\x11\n\tlog_level\x18\x01 \x01(\t\x12\x13\n\x0bprivate_key\x18\x02 \x01(\t\x12\x13\n\x0blisten_port\x18\x03 \x01(\x05\x12/\n\x07routing\x18\x04 \x01(\x0b\x32\x1e.abbot.DriverWireguard.Routing\x12*\n\x05peers\x18\x05 \x03(\x0b\x32\x1b.abbot.DriverWireguard.Peer\x1a\x80\x01\n\x04Peer\x12\x12\n\npublic_key\x18\x01 \x01(\t\x12\x16\n\x0epre_shared_key\x18\x02 \x01(\t\x12\x10\n\x08\x65ndpoint\x18\x03 \x01(\t\x12%\n\x1dpersistent_keepalive_interval\x18\x04 \x01(\x05\x12\x13\n\x0b\x61llowed_ips\x18\x05 \x03(\t\x1a@\n\x07Routing\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12\r\n\x05table\x18\x02 \x01(\x05\x12\x15\n\rfirewall_mark\x18\x03 \x01(\x05\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
 )
 
 
@@ -56,7 +56,7 @@ _DRIVERWIREGUARD_PEER = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='persistent_keepalive_interval', full_name='abbot.DriverWireguard.Peer.persistent_keepalive_interval', index=3,
-      number=4, type=3, cpp_type=2, label=1,
+      number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

@@ -26,8 +26,8 @@ message DriverWireguard {
     string pre_shared_key = 2;
     string endpoint = 3;
 
-    // duration in nanoseconds
-    int64 persistent_keepalive_interval = 4;
+    // duration in seconds
+    int32 persistent_keepalive_interval = 4;
     repeated string allowed_ips = 5;
   }
 
