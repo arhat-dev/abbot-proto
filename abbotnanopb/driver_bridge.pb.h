@@ -19,7 +19,7 @@ typedef struct _abbot_DriverBridge {
     int32_t tx_queue_len;
     bool promisc;
     bool hairpin;
-    bool huard;
+    bool guard;
     bool fastLeave;
     bool root_block;
     bool learning;
@@ -37,28 +37,28 @@ typedef struct _abbot_DriverBridge {
 #define abbot_DriverBridge_alias_tag             1
 #define abbot_DriverBridge_tx_queue_len_tag      2
 #define abbot_DriverBridge_promisc_tag           3
-#define abbot_DriverBridge_hairpin_tag           12
-#define abbot_DriverBridge_huard_tag             13
-#define abbot_DriverBridge_fastLeave_tag         14
-#define abbot_DriverBridge_root_block_tag        15
-#define abbot_DriverBridge_learning_tag          16
-#define abbot_DriverBridge_flood_tag             17
-#define abbot_DriverBridge_proxy_arp_tag         18
-#define abbot_DriverBridge_proxy_arp_wifi_tag    19
+#define abbot_DriverBridge_hairpin_tag           11
+#define abbot_DriverBridge_guard_tag             12
+#define abbot_DriverBridge_fastLeave_tag         13
+#define abbot_DriverBridge_root_block_tag        14
+#define abbot_DriverBridge_learning_tag          15
+#define abbot_DriverBridge_flood_tag             16
+#define abbot_DriverBridge_proxy_arp_tag         17
+#define abbot_DriverBridge_proxy_arp_wifi_tag    18
 
 /* Struct field encoding specification for nanopb */
 #define abbot_DriverBridge_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   alias,             1) \
 X(a, STATIC,   SINGULAR, INT32,    tx_queue_len,      2) \
 X(a, STATIC,   SINGULAR, BOOL,     promisc,           3) \
-X(a, STATIC,   SINGULAR, BOOL,     hairpin,          12) \
-X(a, STATIC,   SINGULAR, BOOL,     huard,            13) \
-X(a, STATIC,   SINGULAR, BOOL,     fastLeave,        14) \
-X(a, STATIC,   SINGULAR, BOOL,     root_block,       15) \
-X(a, STATIC,   SINGULAR, BOOL,     learning,         16) \
-X(a, STATIC,   SINGULAR, BOOL,     flood,            17) \
-X(a, STATIC,   SINGULAR, BOOL,     proxy_arp,        18) \
-X(a, STATIC,   SINGULAR, BOOL,     proxy_arp_wifi,   19)
+X(a, STATIC,   SINGULAR, BOOL,     hairpin,          11) \
+X(a, STATIC,   SINGULAR, BOOL,     guard,            12) \
+X(a, STATIC,   SINGULAR, BOOL,     fastLeave,        13) \
+X(a, STATIC,   SINGULAR, BOOL,     root_block,       14) \
+X(a, STATIC,   SINGULAR, BOOL,     learning,         15) \
+X(a, STATIC,   SINGULAR, BOOL,     flood,            16) \
+X(a, STATIC,   SINGULAR, BOOL,     proxy_arp,        17) \
+X(a, STATIC,   SINGULAR, BOOL,     proxy_arp_wifi,   18)
 #define abbot_DriverBridge_CALLBACK pb_default_field_callback
 #define abbot_DriverBridge_DEFAULT NULL
 

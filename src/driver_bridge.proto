@@ -26,12 +26,12 @@ message DriverBridge {
   bool promisc = 3;
 
   // bridge options
-  bool hairpin = 12;
-  bool huard = 13;
-  bool fastLeave = 14;
-  bool root_block = 15;
-  bool learning = 16;
-  bool flood = 17;
-  bool proxy_arp = 18;
-  bool proxy_arp_wifi = 19;
+  bool hairpin = 11;
+  bool guard = 12;
+  bool fastLeave = 13;
+  bool root_block = 14;
+  bool learning = 15;
+  bool flood = 16;
+  bool proxy_arp = 17;
+  bool proxy_arp_wifi = 18;
 }
