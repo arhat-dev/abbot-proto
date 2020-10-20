@@ -16,25 +16,28 @@ extern "C" {
 /* Struct definitions */
 typedef struct _abbot_NetworkInterface {
     pb_callback_t name;
-    pb_callback_t addresses;
+    int32_t mtu;
     pb_callback_t hardware_address;
+    pb_callback_t addresses;
 } abbot_NetworkInterface;
 
 
 /* Initializer values for message structs */
-#define abbot_NetworkInterface_init_default      {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
-#define abbot_NetworkInterface_init_zero         {{{NULL}, NULL}, {{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_NetworkInterface_init_default      {{{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
+#define abbot_NetworkInterface_init_zero         {{{NULL}, NULL}, 0, {{NULL}, NULL}, {{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define abbot_NetworkInterface_name_tag          1
-#define abbot_NetworkInterface_addresses_tag     2
+#define abbot_NetworkInterface_mtu_tag           2
 #define abbot_NetworkInterface_hardware_address_tag 3
+#define abbot_NetworkInterface_addresses_tag     4
 
 /* Struct field encoding specification for nanopb */
 #define abbot_NetworkInterface_FIELDLIST(X, a) \
 X(a, CALLBACK, SINGULAR, STRING,   name,              1) \
-X(a, CALLBACK, REPEATED, STRING,   addresses,         2) \
-X(a, CALLBACK, SINGULAR, STRING,   hardware_address,   3)
+X(a, STATIC,   SINGULAR, INT32,    mtu,               2) \
+X(a, CALLBACK, SINGULAR, STRING,   hardware_address,   3) \
+X(a, CALLBACK, REPEATED, STRING,   addresses,         4)
 #define abbot_NetworkInterface_CALLBACK pb_default_field_callback
 #define abbot_NetworkInterface_DEFAULT NULL
 

@@ -16,18 +16,20 @@ extern "C" {
 /* Enum definitions */
 typedef enum _abbot_RequestType {
     abbot_RequestType__INVALID_REQUEST = 0,
-    abbot_RequestType_REQ_ENSURE_CTR_NETWORK_CONFIG = 1,
-    abbot_RequestType_REQ_ENSURE_CTR_NETWORK = 2,
-    abbot_RequestType_REQ_RESTORE_CTR_NETWORK = 3,
-    abbot_RequestType_REQ_DELETE_CTR_NETWORK = 4,
-    abbot_RequestType_REQ_QUERY_CTR_NETWORK = 5
+    abbot_RequestType_REQ_ENSURE_CTR_NETWORK_CONFIG = 11,
+    abbot_RequestType_REQ_ENSURE_CTR_NETWORK = 12,
+    abbot_RequestType_REQ_RESTORE_CTR_NETWORK = 13,
+    abbot_RequestType_REQ_DELETE_CTR_NETWORK = 14,
+    abbot_RequestType_REQ_QUERY_CTR_NETWORK = 15,
+    abbot_RequestType_REQ_ENSURE_HOST_NETWORK_CONFIG = 21
 } abbot_RequestType;
 
 typedef enum _abbot_ResponseType {
     abbot_ResponseType__INVALID_RESPONSE = 0,
     abbot_ResponseType_RESP_DONE = 1,
-    abbot_ResponseType_RESP_CTR_NETWORK_STATUS = 2,
-    abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST = 3
+    abbot_ResponseType_RESP_CTR_NETWORK_STATUS = 11,
+    abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST = 12,
+    abbot_ResponseType_RESP_HOST_NETWORK_STATUS = 21
 } abbot_ResponseType;
 
 /* Struct definitions */
@@ -44,12 +46,12 @@ typedef struct _abbot_Response {
 
 /* Helper constants for enums */
 #define _abbot_RequestType_MIN abbot_RequestType__INVALID_REQUEST
-#define _abbot_RequestType_MAX abbot_RequestType_REQ_QUERY_CTR_NETWORK
-#define _abbot_RequestType_ARRAYSIZE ((abbot_RequestType)(abbot_RequestType_REQ_QUERY_CTR_NETWORK+1))
+#define _abbot_RequestType_MAX abbot_RequestType_REQ_ENSURE_HOST_NETWORK_CONFIG
+#define _abbot_RequestType_ARRAYSIZE ((abbot_RequestType)(abbot_RequestType_REQ_ENSURE_HOST_NETWORK_CONFIG+1))
 
 #define _abbot_ResponseType_MIN abbot_ResponseType__INVALID_RESPONSE
-#define _abbot_ResponseType_MAX abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST
-#define _abbot_ResponseType_ARRAYSIZE ((abbot_ResponseType)(abbot_ResponseType_RESP_CTR_NETWORK_STATUS_LIST+1))
+#define _abbot_ResponseType_MAX abbot_ResponseType_RESP_HOST_NETWORK_STATUS
+#define _abbot_ResponseType_ARRAYSIZE ((abbot_ResponseType)(abbot_ResponseType_RESP_HOST_NETWORK_STATUS+1))
 
 
 /* Initializer values for message structs */

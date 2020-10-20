@@ -20,17 +20,16 @@ package abbot;
 
 option go_package = "arhat.dev/abbot-proto/abbotgopb";
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-
 enum RequestType {
     _INVALID_REQUEST = 0;
 
-    REQ_ENSURE_CTR_NETWORK_CONFIG = 1;
+    REQ_ENSURE_CTR_NETWORK_CONFIG = 11;
+    REQ_ENSURE_CTR_NETWORK = 12;
+    REQ_RESTORE_CTR_NETWORK = 13;
+    REQ_DELETE_CTR_NETWORK = 14;
+    REQ_QUERY_CTR_NETWORK = 15;
 
-    REQ_ENSURE_CTR_NETWORK = 2;
-    REQ_RESTORE_CTR_NETWORK = 3;
-    REQ_DELETE_CTR_NETWORK = 4;
-    REQ_QUERY_CTR_NETWORK = 5;
+    REQ_ENSURE_HOST_NETWORK_CONFIG = 21;
 }
 
 message Request {
@@ -44,8 +43,10 @@ enum ResponseType {
 
     RESP_DONE = 1;
 
-    RESP_CTR_NETWORK_STATUS = 2;
-    RESP_CTR_NETWORK_STATUS_LIST = 3;
+    RESP_CTR_NETWORK_STATUS = 11;
+    RESP_CTR_NETWORK_STATUS_LIST = 12;
+
+    RESP_HOST_NETWORK_STATUS = 21;
 }
 
 message Response {

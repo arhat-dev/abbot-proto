@@ -20,9 +20,18 @@ package abbot;
 
 option go_package = "arhat.dev/abbot-proto/abbotgopb";
 
-message NetworkInterface {
-    string name = 1;
-    int32 mtu = 2;
-    string hardware_address = 3;
-    repeated string addresses = 4;
+message DriverBridge {
+  string Alias = 1;
+  int32 TxQLen = 2;
+  bool Promisc = 3;
+
+  // bridge options
+  bool Hairpin = 12;
+  bool Guard = 13;
+  bool FastLeave = 14;
+  bool RootBlock = 15;
+  bool Learning = 16;
+  bool Flood = 17;
+  bool ProxyArp = 18;
+  bool ProxyArpWiFi = 19;
 }

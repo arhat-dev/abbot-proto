@@ -12,7 +12,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from github.com.gogo.protobuf.gogoproto import gogo_pb2 as github_dot_com_dot_gogo_dot_protobuf_dot_gogoproto_dot_gogo__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -21,9 +20,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0bproto.proto\x12\x05\x61\x62\x62ot\x1a-github.com/gogo/protobuf/gogoproto/gogo.proto\"9\n\x07Request\x12 \n\x04kind\x18\x01 \x01(\x0e\x32\x12.abbot.RequestType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c\";\n\x08Response\x12!\n\x04kind\x18\x01 \x01(\x0e\x32\x13.abbot.ResponseType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c*\xb6\x01\n\x0bRequestType\x12\x14\n\x10_INVALID_REQUEST\x10\x00\x12!\n\x1dREQ_ENSURE_CTR_NETWORK_CONFIG\x10\x01\x12\x1a\n\x16REQ_ENSURE_CTR_NETWORK\x10\x02\x12\x1b\n\x17REQ_RESTORE_CTR_NETWORK\x10\x03\x12\x1a\n\x16REQ_DELETE_CTR_NETWORK\x10\x04\x12\x19\n\x15REQ_QUERY_CTR_NETWORK\x10\x05*s\n\x0cResponseType\x12\x15\n\x11_INVALID_RESPONSE\x10\x00\x12\r\n\tRESP_DONE\x10\x01\x12\x1b\n\x17RESP_CTR_NETWORK_STATUS\x10\x02\x12 \n\x1cRESP_CTR_NETWORK_STATUS_LIST\x10\x03\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
-  ,
-  dependencies=[github_dot_com_dot_gogo_dot_protobuf_dot_gogoproto_dot_gogo__pb2.DESCRIPTOR,])
+  serialized_pb=b'\n\x0bproto.proto\x12\x05\x61\x62\x62ot\"9\n\x07Request\x12 \n\x04kind\x18\x01 \x01(\x0e\x32\x12.abbot.RequestType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c\";\n\x08Response\x12!\n\x04kind\x18\x01 \x01(\x0e\x32\x13.abbot.ResponseType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c*\xda\x01\n\x0bRequestType\x12\x14\n\x10_INVALID_REQUEST\x10\x00\x12!\n\x1dREQ_ENSURE_CTR_NETWORK_CONFIG\x10\x0b\x12\x1a\n\x16REQ_ENSURE_CTR_NETWORK\x10\x0c\x12\x1b\n\x17REQ_RESTORE_CTR_NETWORK\x10\r\x12\x1a\n\x16REQ_DELETE_CTR_NETWORK\x10\x0e\x12\x19\n\x15REQ_QUERY_CTR_NETWORK\x10\x0f\x12\"\n\x1eREQ_ENSURE_HOST_NETWORK_CONFIG\x10\x15*\x91\x01\n\x0cResponseType\x12\x15\n\x11_INVALID_RESPONSE\x10\x00\x12\r\n\tRESP_DONE\x10\x01\x12\x1b\n\x17RESP_CTR_NETWORK_STATUS\x10\x0b\x12 \n\x1cRESP_CTR_NETWORK_STATUS_LIST\x10\x0c\x12\x1c\n\x18RESP_HOST_NETWORK_STATUS\x10\x15\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+)
 
 _REQUESTTYPE = _descriptor.EnumDescriptor(
   name='RequestType',
@@ -38,35 +36,40 @@ _REQUESTTYPE = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_ENSURE_CTR_NETWORK_CONFIG', index=1, number=1,
+      name='REQ_ENSURE_CTR_NETWORK_CONFIG', index=1, number=11,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_ENSURE_CTR_NETWORK', index=2, number=2,
+      name='REQ_ENSURE_CTR_NETWORK', index=2, number=12,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_RESTORE_CTR_NETWORK', index=3, number=3,
+      name='REQ_RESTORE_CTR_NETWORK', index=3, number=13,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_DELETE_CTR_NETWORK', index=4, number=4,
+      name='REQ_DELETE_CTR_NETWORK', index=4, number=14,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_QUERY_CTR_NETWORK', index=5, number=5,
+      name='REQ_QUERY_CTR_NETWORK', index=5, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='REQ_ENSURE_HOST_NETWORK_CONFIG', index=6, number=21,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=190,
-  serialized_end=372,
+  serialized_start=143,
+  serialized_end=361,
 )
 _sym_db.RegisterEnumDescriptor(_REQUESTTYPE)
 
@@ -89,34 +92,41 @@ _RESPONSETYPE = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='RESP_CTR_NETWORK_STATUS', index=2, number=2,
+      name='RESP_CTR_NETWORK_STATUS', index=2, number=11,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='RESP_CTR_NETWORK_STATUS_LIST', index=3, number=3,
+      name='RESP_CTR_NETWORK_STATUS_LIST', index=3, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='RESP_HOST_NETWORK_STATUS', index=4, number=21,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=374,
-  serialized_end=489,
+  serialized_start=364,
+  serialized_end=509,
 )
 _sym_db.RegisterEnumDescriptor(_RESPONSETYPE)
 
 ResponseType = enum_type_wrapper.EnumTypeWrapper(_RESPONSETYPE)
 _INVALID_REQUEST = 0
-REQ_ENSURE_CTR_NETWORK_CONFIG = 1
-REQ_ENSURE_CTR_NETWORK = 2
-REQ_RESTORE_CTR_NETWORK = 3
-REQ_DELETE_CTR_NETWORK = 4
-REQ_QUERY_CTR_NETWORK = 5
+REQ_ENSURE_CTR_NETWORK_CONFIG = 11
+REQ_ENSURE_CTR_NETWORK = 12
+REQ_RESTORE_CTR_NETWORK = 13
+REQ_DELETE_CTR_NETWORK = 14
+REQ_QUERY_CTR_NETWORK = 15
+REQ_ENSURE_HOST_NETWORK_CONFIG = 21
 _INVALID_RESPONSE = 0
 RESP_DONE = 1
-RESP_CTR_NETWORK_STATUS = 2
-RESP_CTR_NETWORK_STATUS_LIST = 3
+RESP_CTR_NETWORK_STATUS = 11
+RESP_CTR_NETWORK_STATUS_LIST = 12
+RESP_HOST_NETWORK_STATUS = 21
 
 
 
@@ -154,8 +164,8 @@ _REQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=69,
-  serialized_end=126,
+  serialized_start=22,
+  serialized_end=79,
 )
 
 
@@ -193,8 +203,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=128,
-  serialized_end=187,
+  serialized_start=81,
+  serialized_end=140,
 )
 
 _REQUEST.fields_by_name['kind'].enum_type = _REQUESTTYPE

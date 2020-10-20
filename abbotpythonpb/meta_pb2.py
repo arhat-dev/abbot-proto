@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nmeta.proto\x12\x05\x61\x62\x62ot\"M\n\x10NetworkInterface\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\taddresses\x18\x02 \x03(\t\x12\x18\n\x10hardware_address\x18\x03 \x01(\tB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\nmeta.proto\x12\x05\x61\x62\x62ot\"Z\n\x10NetworkInterface\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03mtu\x18\x02 \x01(\x05\x12\x18\n\x10hardware_address\x18\x03 \x01(\t\x12\x11\n\taddresses\x18\x04 \x03(\tB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
 )
 
 
@@ -41,9 +41,9 @@ _NETWORKINTERFACE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='addresses', full_name='abbot.NetworkInterface.addresses', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      name='mtu', full_name='abbot.NetworkInterface.mtu', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -51,6 +51,13 @@ _NETWORKINTERFACE = _descriptor.Descriptor(
       name='hardware_address', full_name='abbot.NetworkInterface.hardware_address', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='addresses', full_name='abbot.NetworkInterface.addresses', index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -67,7 +74,7 @@ _NETWORKINTERFACE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=21,
-  serialized_end=98,
+  serialized_end=111,
 )
 
 DESCRIPTOR.message_types_by_name['NetworkInterface'] = _NETWORKINTERFACE

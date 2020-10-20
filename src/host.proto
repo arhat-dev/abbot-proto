@@ -20,9 +20,29 @@ package abbot;
 
 option go_package = "arhat.dev/abbot-proto/abbotgopb";
 
-message NetworkInterface {
-    string name = 1;
-    int32 mtu = 2;
-    string hardware_address = 3;
-    repeated string addresses = 4;
+import "meta.proto";
+
+// drivers
+import "driver_unknown.proto";
+import "driver_bridge.proto";
+import "driver_wireguard.proto";
+
+message HostNetworkInterface {
+    NetworkInterface metadata = 1;
+
+    oneof config {
+        // driver not supported
+        DriverUnknown unknown = 10;
+
+        DriverBridge bridge = 11;
+        DriverWireguard wireguard = 12;
+    }
+}
+
+message HostNetworkConfigEnsureRequest {
+    repeated HostNetworkInterface expected = 1;
+}
+
+message HostNetworkStatusResponse {
+    repeated HostNetworkInterface actual = 1;
 }
