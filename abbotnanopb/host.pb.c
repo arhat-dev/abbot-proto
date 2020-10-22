@@ -15,7 +15,7 @@ PB_BIND(abbot_HostNetworkConfigEnsureRequest, abbot_HostNetworkConfigEnsureReque
 PB_BIND(abbot_HostNetworkConfigQueryRequest, abbot_HostNetworkConfigQueryRequest, AUTO)
 
 
-PB_BIND(abbot_HostNetworkStatusResponse, abbot_HostNetworkStatusResponse, AUTO)
+PB_BIND(abbot_HostNetworkConfigResponse, abbot_HostNetworkConfigResponse, AUTO)
 
 
 

@@ -22,17 +22,18 @@ typedef struct _abbot_HostNetworkConfigEnsureRequest {
     pb_callback_t expected;
 } abbot_HostNetworkConfigEnsureRequest;
 
-typedef struct _abbot_HostNetworkStatusResponse {
-    pb_callback_t actual;
-} abbot_HostNetworkStatusResponse;
-
 typedef struct _abbot_HostNetworkConfigQueryRequest {
-    bool all;
+    pb_callback_t providers;
 } abbot_HostNetworkConfigQueryRequest;
+
+typedef struct _abbot_HostNetworkConfigResponse {
+    pb_callback_t actual;
+} abbot_HostNetworkConfigResponse;
 
 typedef struct _abbot_HostNetworkInterface {
     bool has_metadata;
     abbot_NetworkInterface metadata;
+    pb_callback_t provider;
     pb_size_t which_config;
     union {
         abbot_DriverUnknown unknown;
@@ -43,20 +44,21 @@ typedef struct _abbot_HostNetworkInterface {
 
 
 /* Initializer values for message structs */
-#define abbot_HostNetworkInterface_init_default  {false, abbot_NetworkInterface_init_default, 0, {abbot_DriverUnknown_init_default}}
+#define abbot_HostNetworkInterface_init_default  {false, abbot_NetworkInterface_init_default, {{NULL}, NULL}, 0, {abbot_DriverUnknown_init_default}}
 #define abbot_HostNetworkConfigEnsureRequest_init_default {{{NULL}, NULL}}
-#define abbot_HostNetworkConfigQueryRequest_init_default {0}
-#define abbot_HostNetworkStatusResponse_init_default {{{NULL}, NULL}}
-#define abbot_HostNetworkInterface_init_zero     {false, abbot_NetworkInterface_init_zero, 0, {abbot_DriverUnknown_init_zero}}
+#define abbot_HostNetworkConfigQueryRequest_init_default {{{NULL}, NULL}}
+#define abbot_HostNetworkConfigResponse_init_default {{{NULL}, NULL}}
+#define abbot_HostNetworkInterface_init_zero     {false, abbot_NetworkInterface_init_zero, {{NULL}, NULL}, 0, {abbot_DriverUnknown_init_zero}}
 #define abbot_HostNetworkConfigEnsureRequest_init_zero {{{NULL}, NULL}}
-#define abbot_HostNetworkConfigQueryRequest_init_zero {0}
-#define abbot_HostNetworkStatusResponse_init_zero {{{NULL}, NULL}}
+#define abbot_HostNetworkConfigQueryRequest_init_zero {{{NULL}, NULL}}
+#define abbot_HostNetworkConfigResponse_init_zero {{{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define abbot_HostNetworkConfigEnsureRequest_expected_tag 1
-#define abbot_HostNetworkStatusResponse_actual_tag 1
-#define abbot_HostNetworkConfigQueryRequest_all_tag 1
+#define abbot_HostNetworkConfigQueryRequest_providers_tag 1
+#define abbot_HostNetworkConfigResponse_actual_tag 1
 #define abbot_HostNetworkInterface_metadata_tag  1
+#define abbot_HostNetworkInterface_provider_tag  2
 #define abbot_HostNetworkInterface_unknown_tag   10
 #define abbot_HostNetworkInterface_bridge_tag    11
 #define abbot_HostNetworkInterface_wireguard_tag 12
@@ -64,10 +66,11 @@ typedef struct _abbot_HostNetworkInterface {
 /* Struct field encoding specification for nanopb */
 #define abbot_HostNetworkInterface_FIELDLIST(X, a) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  metadata,          1) \
+X(a, CALLBACK, SINGULAR, STRING,   provider,          2) \
 X(a, STATIC,   ONEOF,    MESSAGE,  (config,unknown,config.unknown),  10) \
 X(a, STATIC,   ONEOF,    MESSAGE,  (config,bridge,config.bridge),  11) \
 X(a, STATIC,   ONEOF,    MESSAGE,  (config,wireguard,config.wireguard),  12)
-#define abbot_HostNetworkInterface_CALLBACK NULL
+#define abbot_HostNetworkInterface_CALLBACK pb_default_field_callback
 #define abbot_HostNetworkInterface_DEFAULT NULL
 #define abbot_HostNetworkInterface_metadata_MSGTYPE abbot_NetworkInterface
 #define abbot_HostNetworkInterface_config_unknown_MSGTYPE abbot_DriverUnknown
@@ -81,33 +84,32 @@ X(a, CALLBACK, REPEATED, MESSAGE,  expected,          1)
 #define abbot_HostNetworkConfigEnsureRequest_expected_MSGTYPE abbot_HostNetworkInterface
 
 #define abbot_HostNetworkConfigQueryRequest_FIELDLIST(X, a) \
-X(a, STATIC,   SINGULAR, BOOL,     all,               1)
-#define abbot_HostNetworkConfigQueryRequest_CALLBACK NULL
+X(a, CALLBACK, REPEATED, STRING,   providers,         1)
+#define abbot_HostNetworkConfigQueryRequest_CALLBACK pb_default_field_callback
 #define abbot_HostNetworkConfigQueryRequest_DEFAULT NULL
 
-#define abbot_HostNetworkStatusResponse_FIELDLIST(X, a) \
+#define abbot_HostNetworkConfigResponse_FIELDLIST(X, a) \
 X(a, CALLBACK, REPEATED, MESSAGE,  actual,            1)
-#define abbot_HostNetworkStatusResponse_CALLBACK pb_default_field_callback
-#define abbot_HostNetworkStatusResponse_DEFAULT NULL
-#define abbot_HostNetworkStatusResponse_actual_MSGTYPE abbot_HostNetworkInterface
+#define abbot_HostNetworkConfigResponse_CALLBACK pb_default_field_callback
+#define abbot_HostNetworkConfigResponse_DEFAULT NULL
+#define abbot_HostNetworkConfigResponse_actual_MSGTYPE abbot_HostNetworkInterface
 
 extern const pb_msgdesc_t abbot_HostNetworkInterface_msg;
 extern const pb_msgdesc_t abbot_HostNetworkConfigEnsureRequest_msg;
 extern const pb_msgdesc_t abbot_HostNetworkConfigQueryRequest_msg;
-extern const pb_msgdesc_t abbot_HostNetworkStatusResponse_msg;
+extern const pb_msgdesc_t abbot_HostNetworkConfigResponse_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
 #define abbot_HostNetworkInterface_fields &abbot_HostNetworkInterface_msg
 #define abbot_HostNetworkConfigEnsureRequest_fields &abbot_HostNetworkConfigEnsureRequest_msg
 #define abbot_HostNetworkConfigQueryRequest_fields &abbot_HostNetworkConfigQueryRequest_msg
-#define abbot_HostNetworkStatusResponse_fields &abbot_HostNetworkStatusResponse_msg
+#define abbot_HostNetworkConfigResponse_fields &abbot_HostNetworkConfigResponse_msg
 
 /* Maximum encoded size of messages (where known) */
-union abbot_HostNetworkInterface_config_size_union {char f11[(6 + abbot_DriverBridge_size)]; char f12[(6 + abbot_DriverWireguard_size)]; char f0[2];};
-#define abbot_HostNetworkInterface_size          (6 + abbot_NetworkInterface_size + sizeof(abbot_HostNetworkInterface_config_size_union))
+/* abbot_HostNetworkInterface_size depends on runtime parameters */
 /* abbot_HostNetworkConfigEnsureRequest_size depends on runtime parameters */
-#define abbot_HostNetworkConfigQueryRequest_size 2
-/* abbot_HostNetworkStatusResponse_size depends on runtime parameters */
+/* abbot_HostNetworkConfigQueryRequest_size depends on runtime parameters */
+/* abbot_HostNetworkConfigResponse_size depends on runtime parameters */
 
 #ifdef __cplusplus
 } /* extern "C" */

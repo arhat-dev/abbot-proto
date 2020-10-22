@@ -1,5 +1,5 @@
 /*
-Copyright 2019 The arhat.dev Authors.
+Copyright 2020 The arhat.dev Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -30,6 +30,15 @@ import "driver_wireguard.proto";
 message HostNetworkInterface {
     NetworkInterface metadata = 1;
 
+    // provider of this interface, if this interface was configured
+    // in configuration, the provider MUST be `static`
+    //
+    // when you create a network interface dynamically
+    // you should provide a unique provider value to
+    // make sure this interface is always managed by
+    // you
+    string provider = 2;
+
     oneof config {
         // driver not supported
         DriverUnknown unknown = 10;
@@ -44,10 +53,12 @@ message HostNetworkConfigEnsureRequest {
 }
 
 message HostNetworkConfigQueryRequest {
-    // show all interfaces, including those not managed
-    bool all = 1;
+    // filter interfaces from config sources
+    //
+    // if no provider specified, get all interfaces
+    repeated string providers = 1;
 }
 
-message HostNetworkStatusResponse {
+message HostNetworkConfigResponse {
     repeated HostNetworkInterface actual = 1;
 }

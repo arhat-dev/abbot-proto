@@ -54,6 +54,10 @@ func NewContainerNetworkEnsureRequest(
 	}
 }
 
+func NewContainerNetworkConfigQueryRequest() *ContainerNetworkConfigQueryRequest {
+	return &ContainerNetworkConfigQueryRequest{}
+}
+
 func NewContainerNetworkRestoreRequest(
 	containerID string, pid uint32,
 ) *ContainerNetworkRestoreRequest {
@@ -93,5 +97,13 @@ func NewHostNetworkConfigEnsureRequest(
 ) *HostNetworkConfigEnsureRequest {
 	return &HostNetworkConfigEnsureRequest{
 		Expected: interfaces,
+	}
+}
+
+func NewHostNetworkConfigQueryRequest(
+	providers ...string,
+) *HostNetworkConfigQueryRequest {
+	return &HostNetworkConfigQueryRequest{
+		Providers: providers,
 	}
 }
