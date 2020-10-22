@@ -43,6 +43,11 @@ message HostNetworkConfigEnsureRequest {
     repeated HostNetworkInterface expected = 1;
 }
 
+message HostNetworkConfigQueryRequest {
+    // show all interfaces, including those not managed
+    bool all = 1;
+}
+
 message HostNetworkStatusResponse {
     repeated HostNetworkInterface actual = 1;
 }

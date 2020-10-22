@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nhost.proto\x12\x05\x61\x62\x62ot\x1a\nmeta.proto\x1a\x14\x64river_unknown.proto\x1a\x13\x64river_bridge.proto\x1a\x16\x64river_wireguard.proto\"\xc8\x01\n\x14HostNetworkInterface\x12)\n\x08metadata\x18\x01 \x01(\x0b\x32\x17.abbot.NetworkInterface\x12\'\n\x07unknown\x18\n \x01(\x0b\x32\x14.abbot.DriverUnknownH\x00\x12%\n\x06\x62ridge\x18\x0b \x01(\x0b\x32\x13.abbot.DriverBridgeH\x00\x12+\n\twireguard\x18\x0c \x01(\x0b\x32\x16.abbot.DriverWireguardH\x00\x42\x08\n\x06\x63onfig\"O\n\x1eHostNetworkConfigEnsureRequest\x12-\n\x08\x65xpected\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterface\"H\n\x19HostNetworkStatusResponse\x12+\n\x06\x61\x63tual\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterfaceB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\nhost.proto\x12\x05\x61\x62\x62ot\x1a\nmeta.proto\x1a\x14\x64river_unknown.proto\x1a\x13\x64river_bridge.proto\x1a\x16\x64river_wireguard.proto\"\xc8\x01\n\x14HostNetworkInterface\x12)\n\x08metadata\x18\x01 \x01(\x0b\x32\x17.abbot.NetworkInterface\x12\'\n\x07unknown\x18\n \x01(\x0b\x32\x14.abbot.DriverUnknownH\x00\x12%\n\x06\x62ridge\x18\x0b \x01(\x0b\x32\x13.abbot.DriverBridgeH\x00\x12+\n\twireguard\x18\x0c \x01(\x0b\x32\x16.abbot.DriverWireguardH\x00\x42\x08\n\x06\x63onfig\"O\n\x1eHostNetworkConfigEnsureRequest\x12-\n\x08\x65xpected\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterface\",\n\x1dHostNetworkConfigQueryRequest\x12\x0b\n\x03\x61ll\x18\x01 \x01(\x08\"H\n\x19HostNetworkStatusResponse\x12+\n\x06\x61\x63tual\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterfaceB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
   ,
   dependencies=[meta__pb2.DESCRIPTOR,driver__unknown__pb2.DESCRIPTOR,driver__bridge__pb2.DESCRIPTOR,driver__wireguard__pb2.DESCRIPTOR,])
 
@@ -120,6 +120,38 @@ _HOSTNETWORKCONFIGENSUREREQUEST = _descriptor.Descriptor(
 )
 
 
+_HOSTNETWORKCONFIGQUERYREQUEST = _descriptor.Descriptor(
+  name='HostNetworkConfigQueryRequest',
+  full_name='abbot.HostNetworkConfigQueryRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='all', full_name='abbot.HostNetworkConfigQueryRequest.all', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=384,
+  serialized_end=428,
+)
+
+
 _HOSTNETWORKSTATUSRESPONSE = _descriptor.Descriptor(
   name='HostNetworkStatusResponse',
   full_name='abbot.HostNetworkStatusResponse',
@@ -147,8 +179,8 @@ _HOSTNETWORKSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=384,
-  serialized_end=456,
+  serialized_start=430,
+  serialized_end=502,
 )
 
 _HOSTNETWORKINTERFACE.fields_by_name['metadata'].message_type = meta__pb2._NETWORKINTERFACE
@@ -168,6 +200,7 @@ _HOSTNETWORKCONFIGENSUREREQUEST.fields_by_name['expected'].message_type = _HOSTN
 _HOSTNETWORKSTATUSRESPONSE.fields_by_name['actual'].message_type = _HOSTNETWORKINTERFACE
 DESCRIPTOR.message_types_by_name['HostNetworkInterface'] = _HOSTNETWORKINTERFACE
 DESCRIPTOR.message_types_by_name['HostNetworkConfigEnsureRequest'] = _HOSTNETWORKCONFIGENSUREREQUEST
+DESCRIPTOR.message_types_by_name['HostNetworkConfigQueryRequest'] = _HOSTNETWORKCONFIGQUERYREQUEST
 DESCRIPTOR.message_types_by_name['HostNetworkStatusResponse'] = _HOSTNETWORKSTATUSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -184,6 +217,13 @@ HostNetworkConfigEnsureRequest = _reflection.GeneratedProtocolMessageType('HostN
   # @@protoc_insertion_point(class_scope:abbot.HostNetworkConfigEnsureRequest)
   })
 _sym_db.RegisterMessage(HostNetworkConfigEnsureRequest)
+
+HostNetworkConfigQueryRequest = _reflection.GeneratedProtocolMessageType('HostNetworkConfigQueryRequest', (_message.Message,), {
+  'DESCRIPTOR' : _HOSTNETWORKCONFIGQUERYREQUEST,
+  '__module__' : 'host_pb2'
+  # @@protoc_insertion_point(class_scope:abbot.HostNetworkConfigQueryRequest)
+  })
+_sym_db.RegisterMessage(HostNetworkConfigQueryRequest)
 
 HostNetworkStatusResponse = _reflection.GeneratedProtocolMessageType('HostNetworkStatusResponse', (_message.Message,), {
   'DESCRIPTOR' : _HOSTNETWORKSTATUSRESPONSE,

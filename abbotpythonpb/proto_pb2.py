@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0bproto.proto\x12\x05\x61\x62\x62ot\"9\n\x07Request\x12 \n\x04kind\x18\x01 \x01(\x0e\x32\x12.abbot.RequestType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c\";\n\x08Response\x12!\n\x04kind\x18\x01 \x01(\x0e\x32\x13.abbot.ResponseType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c*\xda\x01\n\x0bRequestType\x12\x14\n\x10_INVALID_REQUEST\x10\x00\x12!\n\x1dREQ_ENSURE_CTR_NETWORK_CONFIG\x10\x0b\x12\x1a\n\x16REQ_ENSURE_CTR_NETWORK\x10\x0c\x12\x1b\n\x17REQ_RESTORE_CTR_NETWORK\x10\r\x12\x1a\n\x16REQ_DELETE_CTR_NETWORK\x10\x0e\x12\x19\n\x15REQ_QUERY_CTR_NETWORK\x10\x0f\x12\"\n\x1eREQ_ENSURE_HOST_NETWORK_CONFIG\x10\x15*\x91\x01\n\x0cResponseType\x12\x15\n\x11_INVALID_RESPONSE\x10\x00\x12\r\n\tRESP_DONE\x10\x01\x12\x1b\n\x17RESP_CTR_NETWORK_STATUS\x10\x0b\x12 \n\x1cRESP_CTR_NETWORK_STATUS_LIST\x10\x0c\x12\x1c\n\x18RESP_HOST_NETWORK_STATUS\x10\x15\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\x0bproto.proto\x12\x05\x61\x62\x62ot\"9\n\x07Request\x12 \n\x04kind\x18\x01 \x01(\x0e\x32\x12.abbot.RequestType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c\";\n\x08Response\x12!\n\x04kind\x18\x01 \x01(\x0e\x32\x13.abbot.ResponseType\x12\x0c\n\x04\x62ody\x18\x02 \x01(\x0c*\x9f\x02\n\x0bRequestType\x12\x14\n\x10_INVALID_REQUEST\x10\x00\x12!\n\x1dREQ_ENSURE_CTR_NETWORK_CONFIG\x10\x0b\x12 \n\x1cREQ_QUERY_CTR_NETWORK_CONFIG\x10\x0c\x12\x1a\n\x16REQ_ENSURE_CTR_NETWORK\x10\x15\x12\x1b\n\x17REQ_RESTORE_CTR_NETWORK\x10\x16\x12\x1a\n\x16REQ_DELETE_CTR_NETWORK\x10\x17\x12\x19\n\x15REQ_QUERY_CTR_NETWORK\x10\x18\x12\"\n\x1eREQ_ENSURE_HOST_NETWORK_CONFIG\x10\x1f\x12!\n\x1dREQ_QUERY_HOST_NETWORK_CONFIG\x10 *\xae\x01\n\x0cResponseType\x12\x15\n\x11_INVALID_RESPONSE\x10\x00\x12\r\n\tRESP_DONE\x10\x01\x12\x1b\n\x17RESP_CTR_NETWORK_CONFIG\x10\x0b\x12\x1b\n\x17RESP_CTR_NETWORK_STATUS\x10\x15\x12 \n\x1cRESP_CTR_NETWORK_STATUS_LIST\x10\x16\x12\x1c\n\x18RESP_HOST_NETWORK_CONFIG\x10\x1f\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
 )
 
 _REQUESTTYPE = _descriptor.EnumDescriptor(
@@ -41,27 +41,37 @@ _REQUESTTYPE = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_ENSURE_CTR_NETWORK', index=2, number=12,
+      name='REQ_QUERY_CTR_NETWORK_CONFIG', index=2, number=12,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_RESTORE_CTR_NETWORK', index=3, number=13,
+      name='REQ_ENSURE_CTR_NETWORK', index=3, number=21,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_DELETE_CTR_NETWORK', index=4, number=14,
+      name='REQ_RESTORE_CTR_NETWORK', index=4, number=22,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_QUERY_CTR_NETWORK', index=5, number=15,
+      name='REQ_DELETE_CTR_NETWORK', index=5, number=23,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='REQ_ENSURE_HOST_NETWORK_CONFIG', index=6, number=21,
+      name='REQ_QUERY_CTR_NETWORK', index=6, number=24,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='REQ_ENSURE_HOST_NETWORK_CONFIG', index=7, number=31,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='REQ_QUERY_HOST_NETWORK_CONFIG', index=8, number=32,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -69,7 +79,7 @@ _REQUESTTYPE = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=143,
-  serialized_end=361,
+  serialized_end=430,
 )
 _sym_db.RegisterEnumDescriptor(_REQUESTTYPE)
 
@@ -92,41 +102,49 @@ _RESPONSETYPE = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='RESP_CTR_NETWORK_STATUS', index=2, number=11,
+      name='RESP_CTR_NETWORK_CONFIG', index=2, number=11,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='RESP_CTR_NETWORK_STATUS_LIST', index=3, number=12,
+      name='RESP_CTR_NETWORK_STATUS', index=3, number=21,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='RESP_HOST_NETWORK_STATUS', index=4, number=21,
+      name='RESP_CTR_NETWORK_STATUS_LIST', index=4, number=22,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='RESP_HOST_NETWORK_CONFIG', index=5, number=31,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=364,
-  serialized_end=509,
+  serialized_start=433,
+  serialized_end=607,
 )
 _sym_db.RegisterEnumDescriptor(_RESPONSETYPE)
 
 ResponseType = enum_type_wrapper.EnumTypeWrapper(_RESPONSETYPE)
 _INVALID_REQUEST = 0
 REQ_ENSURE_CTR_NETWORK_CONFIG = 11
-REQ_ENSURE_CTR_NETWORK = 12
-REQ_RESTORE_CTR_NETWORK = 13
-REQ_DELETE_CTR_NETWORK = 14
-REQ_QUERY_CTR_NETWORK = 15
-REQ_ENSURE_HOST_NETWORK_CONFIG = 21
+REQ_QUERY_CTR_NETWORK_CONFIG = 12
+REQ_ENSURE_CTR_NETWORK = 21
+REQ_RESTORE_CTR_NETWORK = 22
+REQ_DELETE_CTR_NETWORK = 23
+REQ_QUERY_CTR_NETWORK = 24
+REQ_ENSURE_HOST_NETWORK_CONFIG = 31
+REQ_QUERY_HOST_NETWORK_CONFIG = 32
 _INVALID_RESPONSE = 0
 RESP_DONE = 1
-RESP_CTR_NETWORK_STATUS = 11
-RESP_CTR_NETWORK_STATUS_LIST = 12
-RESP_HOST_NETWORK_STATUS = 21
+RESP_CTR_NETWORK_CONFIG = 11
+RESP_CTR_NETWORK_STATUS = 21
+RESP_CTR_NETWORK_STATUS_LIST = 22
+RESP_HOST_NETWORK_CONFIG = 31
 
 
 

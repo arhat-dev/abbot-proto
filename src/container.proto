@@ -21,6 +21,7 @@ package abbot;
 option go_package = "arhat.dev/abbot-proto/abbotgopb";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 import "meta.proto";
 
 // CNI capabilities args
@@ -125,12 +126,20 @@ message ContainerNetworkConfigEnsureRequest {
     string ipv6_subnet = 2;
 }
 
+message ContainerNetworkConfigQueryRequest {
+}
+
 message ContainerNetworkQueryRequest {
     // (optional) conainer id of the infra container
     string container_id = 1;
 
     // (optional) pid of the infra container
     uint32 pid = 2;
+}
+
+message ContainerNetworkConfigResponse {
+    string ipv4_subnet = 1;
+    string ipv6_subnet = 2;
 }
 
 message ContainerNetworkStatusResponse {

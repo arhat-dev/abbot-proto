@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0f\x63ontainer.proto\x12\x05\x61\x62\x62ot\x1a-github.com/gogo/protobuf/gogoproto/gogo.proto\x1a\nmeta.proto\"\xc9\n\n\nCNICapArgs\x12\x31\n\x0cport_map_arg\x18\x01 \x01(\x0b\x32\x19.abbot.CNICapArgs.PortMapH\x00\x12\x34\n\rbandwidth_arg\x18\x02 \x01(\x0b\x32\x1b.abbot.CNICapArgs.BandwidthH\x00\x12\x31\n\x0cip_range_arg\x18\x03 \x01(\x0b\x32\x19.abbot.CNICapArgs.IPRangeH\x00\x12\x35\n\x0e\x64ns_config_arg\x18\x04 \x01(\x0b\x32\x1b.abbot.CNICapArgs.DNSConfigH\x00\x12\x39\n\x10ip_addresses_arg\x18\x05 \x01(\x0b\x32\x1d.abbot.CNICapArgs.IPAddressesH\x00\x12\x37\n\x0fmac_address_arg\x18\x06 \x01(\x0b\x32\x1c.abbot.CNICapArgs.MacAddressH\x00\x12?\n\x13infiniband_guid_arg\x18\x07 \x01(\x0b\x32 .abbot.CNICapArgs.InfinibandGUIDH\x00\x12\x33\n\rdevice_id_arg\x18\x08 \x01(\x0b\x32\x1a.abbot.CNICapArgs.DeviceIDH\x00\x1a\x92\x01\n\x07PortMap\x12)\n\x0e\x63ontainer_port\x18\x01 \x01(\x05\x42\x11\xea\xde\x1f\rcontainerPort\x12\x1f\n\thost_port\x18\x02 \x01(\x05\x42\x0c\xea\xde\x1f\x08hostPort\x12\x1e\n\x08protocol\x18\x03 \x01(\tB\x0c\xea\xde\x1f\x08protocol\x12\x1b\n\x07host_ip\x18\x04 \x01(\tB\n\xea\xde\x1f\x06hostIP\x1a\xcf\x01\n\tBandwidth\x12/\n\x0cingress_rate\x18\x01 \x01(\x05\x42\x19\xea\xde\x1f\x15ingressRate,omitempty\x12\x31\n\ringress_burst\x18\x02 \x01(\x05\x42\x1a\xea\xde\x1f\x16ingressBurst,omitempty\x12-\n\x0b\x65gress_rate\x18\x03 \x01(\x05\x42\x18\xea\xde\x1f\x14\x65gressRate,omitempty\x12/\n\x0c\x65gress_burst\x18\x04 \x01(\x05\x42\x19\xea\xde\x1f\x15\x65gressBurst,omitempty\x1a\xa7\x01\n\x07IPRange\x12\x1a\n\x06subnet\x18\x01 \x01(\tB\n\xea\xde\x1f\x06subnet\x12-\n\x0brange_start\x18\x02 \x01(\tB\x18\xea\xde\x1f\x14rangeStart,omitempty\x12)\n\trange_end\x18\x03 \x01(\tB\x16\xea\xde\x1f\x12rangeEnd,omitempty\x12&\n\x07gateway\x18\x04 \x01(\tB\x15\xea\xde\x1f\x11gateway,omitempty\x1a\x85\x01\n\tDNSConfig\x12&\n\x07servers\x18\x01 \x03(\tB\x15\xea\xde\x1f\x11servers,omitempty\x12(\n\x08searches\x18\x02 \x03(\tB\x16\xea\xde\x1f\x12searches,omitempty\x12&\n\x07options\x18\x03 \x03(\tB\x15\xea\xde\x1f\x11options,omitempty\x1a-\n\x0bIPAddresses\x12\x1e\n\x03ips\x18\x01 \x03(\tB\x11\xea\xde\x1f\rips,omitempty\x1a,\n\nMacAddress\x12\x1e\n\x03mac\x18\x01 \x01(\tB\x11\xea\xde\x1f\rmac,omitempty\x1aG\n\x0eInfinibandGUID\x12\x35\n\x0finfiniband_guid\x18\x01 \x01(\tB\x1c\xea\xde\x1f\x18infinibandGUID,omitempty\x1a\x35\n\x08\x44\x65viceID\x12)\n\tdevice_id\x18\x01 \x01(\tB\x16\xea\xde\x1f\x12\x64\x65viceID,omitemptyB\x08\n\x06option\"\xdc\x01\n\x1d\x43ontainerNetworkEnsureRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\x12#\n\x08\x63\x61p_args\x18\x03 \x03(\x0b\x32\x11.abbot.CNICapArgs\x12\x43\n\x08\x63ni_args\x18\x04 \x03(\x0b\x32\x31.abbot.ContainerNetworkEnsureRequest.CniArgsEntry\x1a.\n\x0c\x43niArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"C\n\x1e\x43ontainerNetworkRestoreRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\"B\n\x1d\x43ontainerNetworkDeleteRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\"O\n#ContainerNetworkConfigEnsureRequest\x12\x13\n\x0bipv4_subnet\x18\x01 \x01(\t\x12\x13\n\x0bipv6_subnet\x18\x02 \x01(\t\"A\n\x1c\x43ontainerNetworkQueryRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\"Z\n\x1e\x43ontainerNetworkStatusResponse\x12\x0b\n\x03pid\x18\x01 \x01(\r\x12+\n\ninterfaces\x18\x02 \x03(\x0b\x32\x17.abbot.NetworkInterface\"\xe3\x01\n\"ContainerNetworkStatusListResponse\x12\\\n\x12\x63ontainer_networks\x18\x01 \x03(\x0b\x32@.abbot.ContainerNetworkStatusListResponse.ContainerNetworksEntry\x1a_\n\x16\x43ontainerNetworksEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.abbot.ContainerNetworkStatusResponse:\x02\x38\x01\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\x0f\x63ontainer.proto\x12\x05\x61\x62\x62ot\x1a-github.com/gogo/protobuf/gogoproto/gogo.proto\x1a\nmeta.proto\"\xc9\n\n\nCNICapArgs\x12\x31\n\x0cport_map_arg\x18\x01 \x01(\x0b\x32\x19.abbot.CNICapArgs.PortMapH\x00\x12\x34\n\rbandwidth_arg\x18\x02 \x01(\x0b\x32\x1b.abbot.CNICapArgs.BandwidthH\x00\x12\x31\n\x0cip_range_arg\x18\x03 \x01(\x0b\x32\x19.abbot.CNICapArgs.IPRangeH\x00\x12\x35\n\x0e\x64ns_config_arg\x18\x04 \x01(\x0b\x32\x1b.abbot.CNICapArgs.DNSConfigH\x00\x12\x39\n\x10ip_addresses_arg\x18\x05 \x01(\x0b\x32\x1d.abbot.CNICapArgs.IPAddressesH\x00\x12\x37\n\x0fmac_address_arg\x18\x06 \x01(\x0b\x32\x1c.abbot.CNICapArgs.MacAddressH\x00\x12?\n\x13infiniband_guid_arg\x18\x07 \x01(\x0b\x32 .abbot.CNICapArgs.InfinibandGUIDH\x00\x12\x33\n\rdevice_id_arg\x18\x08 \x01(\x0b\x32\x1a.abbot.CNICapArgs.DeviceIDH\x00\x1a\x92\x01\n\x07PortMap\x12)\n\x0e\x63ontainer_port\x18\x01 \x01(\x05\x42\x11\xea\xde\x1f\rcontainerPort\x12\x1f\n\thost_port\x18\x02 \x01(\x05\x42\x0c\xea\xde\x1f\x08hostPort\x12\x1e\n\x08protocol\x18\x03 \x01(\tB\x0c\xea\xde\x1f\x08protocol\x12\x1b\n\x07host_ip\x18\x04 \x01(\tB\n\xea\xde\x1f\x06hostIP\x1a\xcf\x01\n\tBandwidth\x12/\n\x0cingress_rate\x18\x01 \x01(\x05\x42\x19\xea\xde\x1f\x15ingressRate,omitempty\x12\x31\n\ringress_burst\x18\x02 \x01(\x05\x42\x1a\xea\xde\x1f\x16ingressBurst,omitempty\x12-\n\x0b\x65gress_rate\x18\x03 \x01(\x05\x42\x18\xea\xde\x1f\x14\x65gressRate,omitempty\x12/\n\x0c\x65gress_burst\x18\x04 \x01(\x05\x42\x19\xea\xde\x1f\x15\x65gressBurst,omitempty\x1a\xa7\x01\n\x07IPRange\x12\x1a\n\x06subnet\x18\x01 \x01(\tB\n\xea\xde\x1f\x06subnet\x12-\n\x0brange_start\x18\x02 \x01(\tB\x18\xea\xde\x1f\x14rangeStart,omitempty\x12)\n\trange_end\x18\x03 \x01(\tB\x16\xea\xde\x1f\x12rangeEnd,omitempty\x12&\n\x07gateway\x18\x04 \x01(\tB\x15\xea\xde\x1f\x11gateway,omitempty\x1a\x85\x01\n\tDNSConfig\x12&\n\x07servers\x18\x01 \x03(\tB\x15\xea\xde\x1f\x11servers,omitempty\x12(\n\x08searches\x18\x02 \x03(\tB\x16\xea\xde\x1f\x12searches,omitempty\x12&\n\x07options\x18\x03 \x03(\tB\x15\xea\xde\x1f\x11options,omitempty\x1a-\n\x0bIPAddresses\x12\x1e\n\x03ips\x18\x01 \x03(\tB\x11\xea\xde\x1f\rips,omitempty\x1a,\n\nMacAddress\x12\x1e\n\x03mac\x18\x01 \x01(\tB\x11\xea\xde\x1f\rmac,omitempty\x1aG\n\x0eInfinibandGUID\x12\x35\n\x0finfiniband_guid\x18\x01 \x01(\tB\x1c\xea\xde\x1f\x18infinibandGUID,omitempty\x1a\x35\n\x08\x44\x65viceID\x12)\n\tdevice_id\x18\x01 \x01(\tB\x16\xea\xde\x1f\x12\x64\x65viceID,omitemptyB\x08\n\x06option\"\xdc\x01\n\x1d\x43ontainerNetworkEnsureRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\x12#\n\x08\x63\x61p_args\x18\x03 \x03(\x0b\x32\x11.abbot.CNICapArgs\x12\x43\n\x08\x63ni_args\x18\x04 \x03(\x0b\x32\x31.abbot.ContainerNetworkEnsureRequest.CniArgsEntry\x1a.\n\x0c\x43niArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"C\n\x1e\x43ontainerNetworkRestoreRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\"B\n\x1d\x43ontainerNetworkDeleteRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\"O\n#ContainerNetworkConfigEnsureRequest\x12\x13\n\x0bipv4_subnet\x18\x01 \x01(\t\x12\x13\n\x0bipv6_subnet\x18\x02 \x01(\t\"$\n\"ContainerNetworkConfigQueryRequest\"A\n\x1c\x43ontainerNetworkQueryRequest\x12\x14\n\x0c\x63ontainer_id\x18\x01 \x01(\t\x12\x0b\n\x03pid\x18\x02 \x01(\r\"J\n\x1e\x43ontainerNetworkConfigResponse\x12\x13\n\x0bipv4_subnet\x18\x01 \x01(\t\x12\x13\n\x0bipv6_subnet\x18\x02 \x01(\t\"Z\n\x1e\x43ontainerNetworkStatusResponse\x12\x0b\n\x03pid\x18\x01 \x01(\r\x12+\n\ninterfaces\x18\x02 \x03(\x0b\x32\x17.abbot.NetworkInterface\"\xe3\x01\n\"ContainerNetworkStatusListResponse\x12\\\n\x12\x63ontainer_networks\x18\x01 \x03(\x0b\x32@.abbot.ContainerNetworkStatusListResponse.ContainerNetworksEntry\x1a_\n\x16\x43ontainerNetworksEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.abbot.ContainerNetworkStatusResponse:\x02\x38\x01\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
   ,
   dependencies=[github_dot_com_dot_gogo_dot_protobuf_dot_gogoproto_dot_gogo__pb2.DESCRIPTOR,meta__pb2.DESCRIPTOR,])
 
@@ -647,6 +647,31 @@ _CONTAINERNETWORKCONFIGENSUREREQUEST = _descriptor.Descriptor(
 )
 
 
+_CONTAINERNETWORKCONFIGQUERYREQUEST = _descriptor.Descriptor(
+  name='ContainerNetworkConfigQueryRequest',
+  full_name='abbot.ContainerNetworkConfigQueryRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1882,
+  serialized_end=1918,
+)
+
+
 _CONTAINERNETWORKQUERYREQUEST = _descriptor.Descriptor(
   name='ContainerNetworkQueryRequest',
   full_name='abbot.ContainerNetworkQueryRequest',
@@ -681,8 +706,47 @@ _CONTAINERNETWORKQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1882,
-  serialized_end=1947,
+  serialized_start=1920,
+  serialized_end=1985,
+)
+
+
+_CONTAINERNETWORKCONFIGRESPONSE = _descriptor.Descriptor(
+  name='ContainerNetworkConfigResponse',
+  full_name='abbot.ContainerNetworkConfigResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ipv4_subnet', full_name='abbot.ContainerNetworkConfigResponse.ipv4_subnet', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ipv6_subnet', full_name='abbot.ContainerNetworkConfigResponse.ipv6_subnet', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1987,
+  serialized_end=2061,
 )
 
 
@@ -720,8 +784,8 @@ _CONTAINERNETWORKSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1949,
-  serialized_end=2039,
+  serialized_start=2063,
+  serialized_end=2153,
 )
 
 
@@ -759,8 +823,8 @@ _CONTAINERNETWORKSTATUSLISTRESPONSE_CONTAINERNETWORKSENTRY = _descriptor.Descrip
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2174,
-  serialized_end=2269,
+  serialized_start=2288,
+  serialized_end=2383,
 )
 
 _CONTAINERNETWORKSTATUSLISTRESPONSE = _descriptor.Descriptor(
@@ -790,8 +854,8 @@ _CONTAINERNETWORKSTATUSLISTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2042,
-  serialized_end=2269,
+  serialized_start=2156,
+  serialized_end=2383,
 )
 
 _CNICAPARGS_PORTMAP.containing_type = _CNICAPARGS
@@ -846,7 +910,9 @@ DESCRIPTOR.message_types_by_name['ContainerNetworkEnsureRequest'] = _CONTAINERNE
 DESCRIPTOR.message_types_by_name['ContainerNetworkRestoreRequest'] = _CONTAINERNETWORKRESTOREREQUEST
 DESCRIPTOR.message_types_by_name['ContainerNetworkDeleteRequest'] = _CONTAINERNETWORKDELETEREQUEST
 DESCRIPTOR.message_types_by_name['ContainerNetworkConfigEnsureRequest'] = _CONTAINERNETWORKCONFIGENSUREREQUEST
+DESCRIPTOR.message_types_by_name['ContainerNetworkConfigQueryRequest'] = _CONTAINERNETWORKCONFIGQUERYREQUEST
 DESCRIPTOR.message_types_by_name['ContainerNetworkQueryRequest'] = _CONTAINERNETWORKQUERYREQUEST
+DESCRIPTOR.message_types_by_name['ContainerNetworkConfigResponse'] = _CONTAINERNETWORKCONFIGRESPONSE
 DESCRIPTOR.message_types_by_name['ContainerNetworkStatusResponse'] = _CONTAINERNETWORKSTATUSRESPONSE
 DESCRIPTOR.message_types_by_name['ContainerNetworkStatusListResponse'] = _CONTAINERNETWORKSTATUSLISTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -958,12 +1024,26 @@ ContainerNetworkConfigEnsureRequest = _reflection.GeneratedProtocolMessageType('
   })
 _sym_db.RegisterMessage(ContainerNetworkConfigEnsureRequest)
 
+ContainerNetworkConfigQueryRequest = _reflection.GeneratedProtocolMessageType('ContainerNetworkConfigQueryRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CONTAINERNETWORKCONFIGQUERYREQUEST,
+  '__module__' : 'container_pb2'
+  # @@protoc_insertion_point(class_scope:abbot.ContainerNetworkConfigQueryRequest)
+  })
+_sym_db.RegisterMessage(ContainerNetworkConfigQueryRequest)
+
 ContainerNetworkQueryRequest = _reflection.GeneratedProtocolMessageType('ContainerNetworkQueryRequest', (_message.Message,), {
   'DESCRIPTOR' : _CONTAINERNETWORKQUERYREQUEST,
   '__module__' : 'container_pb2'
   # @@protoc_insertion_point(class_scope:abbot.ContainerNetworkQueryRequest)
   })
 _sym_db.RegisterMessage(ContainerNetworkQueryRequest)
+
+ContainerNetworkConfigResponse = _reflection.GeneratedProtocolMessageType('ContainerNetworkConfigResponse', (_message.Message,), {
+  'DESCRIPTOR' : _CONTAINERNETWORKCONFIGRESPONSE,
+  '__module__' : 'container_pb2'
+  # @@protoc_insertion_point(class_scope:abbot.ContainerNetworkConfigResponse)
+  })
+_sym_db.RegisterMessage(ContainerNetworkConfigResponse)
 
 ContainerNetworkStatusResponse = _reflection.GeneratedProtocolMessageType('ContainerNetworkStatusResponse', (_message.Message,), {
   'DESCRIPTOR' : _CONTAINERNETWORKSTATUSRESPONSE,

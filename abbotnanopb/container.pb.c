@@ -48,7 +48,13 @@ PB_BIND(abbot_ContainerNetworkDeleteRequest, abbot_ContainerNetworkDeleteRequest
 PB_BIND(abbot_ContainerNetworkConfigEnsureRequest, abbot_ContainerNetworkConfigEnsureRequest, AUTO)
 
 
+PB_BIND(abbot_ContainerNetworkConfigQueryRequest, abbot_ContainerNetworkConfigQueryRequest, AUTO)
+
+
 PB_BIND(abbot_ContainerNetworkQueryRequest, abbot_ContainerNetworkQueryRequest, AUTO)
+
+
+PB_BIND(abbot_ContainerNetworkConfigResponse, abbot_ContainerNetworkConfigResponse, AUTO)
 
 
 PB_BIND(abbot_ContainerNetworkStatusResponse, abbot_ContainerNetworkStatusResponse, AUTO)
