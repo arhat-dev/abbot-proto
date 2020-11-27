@@ -145,6 +145,16 @@ func (*HostNetworkInterface) XXX_OneofWrappers() []interface{} {
 	}
 }
 
+// Ensure host network interfaces
+//
+// persist and apply host network config for single provider source,
+// which means all expected interfaces in one request MUST share the
+// same provider, this restriction is to protect ohter managed
+// interfaces from being updated unexpectedly
+//
+// this request is transactional, if any failure occurred to any one
+// of the expected interfaces, abbot MUST rollback to previous state
+// and return an error indicating which interface failed
 type HostNetworkConfigEnsureRequest struct {
 	Expected []*HostNetworkInterface `protobuf:"bytes,1,rep,name=expected,proto3" json:"expected,omitempty"`
 }
@@ -188,10 +198,12 @@ func (m *HostNetworkConfigEnsureRequest) GetExpected() []*HostNetworkInterface {
 	return nil
 }
 
+// Query host network config
 type HostNetworkConfigQueryRequest struct {
 	// filter interfaces from config sources
 	//
-	// if no provider specified, get all interfaces
+	// if no provider set, abbot MUST return all known host
+	// interfaces, including unmanaged interfaces
 	Providers []string `protobuf:"bytes,1,rep,name=providers,proto3" json:"providers,omitempty"`
 }
 

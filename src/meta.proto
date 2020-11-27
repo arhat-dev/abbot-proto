@@ -25,5 +25,11 @@ message NetworkInterface {
     int32 mtu = 2;
     string hardware_address = 3;
     repeated string addresses = 4;
+
+    // delete this interface on abbot daemon exit, regardless of whether
+    // it is backed by a system driver or userspace driver
+    //
+    // NOTE: userspace drivers (e.g. tun based wireguard) backed interfaces
+    // will always be deleted on abbot exit
     bool delete_on_exit = 5;
 }

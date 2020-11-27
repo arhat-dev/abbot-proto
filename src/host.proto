@@ -48,14 +48,26 @@ message HostNetworkInterface {
     }
 }
 
+// Ensure host network interfaces
+//
+// persist and apply host network config for single provider source,
+// which means all expected interfaces in one request MUST share the
+// same provider, this restriction is to protect ohter managed
+// interfaces from being updated unexpectedly
+//
+// this request is transactional, if any failure occurred to any one
+// of the expected interfaces, abbot MUST rollback to previous state
+// and return an error indicating which interface failed
 message HostNetworkConfigEnsureRequest {
     repeated HostNetworkInterface expected = 1;
 }
 
+// Query host network config
 message HostNetworkConfigQueryRequest {
     // filter interfaces from config sources
     //
-    // if no provider specified, get all interfaces
+    // if no provider set, abbot MUST return all known host
+    // interfaces, including unmanaged interfaces
     repeated string providers = 1;
 }
 

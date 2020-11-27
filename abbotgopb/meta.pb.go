@@ -29,7 +29,12 @@ type NetworkInterface struct {
 	Mtu             int32    `protobuf:"varint,2,opt,name=mtu,proto3" json:"mtu,omitempty"`
 	HardwareAddress string   `protobuf:"bytes,3,opt,name=hardware_address,json=hardwareAddress,proto3" json:"hardware_address,omitempty"`
 	Addresses       []string `protobuf:"bytes,4,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	DeleteOnExit    bool     `protobuf:"varint,5,opt,name=delete_on_exit,json=deleteOnExit,proto3" json:"delete_on_exit,omitempty"`
+	// delete this interface on abbot daemon exit, regardless of whether
+	// it is backed by a system driver or userspace driver
+	//
+	// NOTE: userspace drivers (e.g. tun based wireguard) backed interfaces
+	// will always be deleted on abbot exit
+	DeleteOnExit bool `protobuf:"varint,5,opt,name=delete_on_exit,json=deleteOnExit,proto3" json:"delete_on_exit,omitempty"`
 }
 
 func (m *NetworkInterface) Reset()      { *m = NetworkInterface{} }
