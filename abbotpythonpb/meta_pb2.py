@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nmeta.proto\x12\x05\x61\x62\x62ot\"Z\n\x10NetworkInterface\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03mtu\x18\x02 \x01(\x05\x12\x18\n\x10hardware_address\x18\x03 \x01(\t\x12\x11\n\taddresses\x18\x04 \x03(\tB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\nmeta.proto\x12\x05\x61\x62\x62ot\"r\n\x10NetworkInterface\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03mtu\x18\x02 \x01(\x05\x12\x18\n\x10hardware_address\x18\x03 \x01(\t\x12\x11\n\taddresses\x18\x04 \x03(\t\x12\x16\n\x0e\x64\x65lete_on_exit\x18\x05 \x01(\x08\x42!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
 )
 
 
@@ -61,6 +61,13 @@ _NETWORKINTERFACE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='delete_on_exit', full_name='abbot.NetworkInterface.delete_on_exit', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -74,7 +81,7 @@ _NETWORKINTERFACE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=21,
-  serialized_end=111,
+  serialized_end=135,
 )
 
 DESCRIPTOR.message_types_by_name['NetworkInterface'] = _NETWORKINTERFACE

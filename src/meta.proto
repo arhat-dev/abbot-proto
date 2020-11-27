@@ -25,4 +25,5 @@ message NetworkInterface {
     int32 mtu = 2;
     string hardware_address = 3;
     repeated string addresses = 4;
+    bool delete_on_exit = 5;
 }
