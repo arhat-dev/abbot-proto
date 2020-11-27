@@ -40,7 +40,9 @@ message HostNetworkInterface {
     string provider = 2;
 
     oneof config {
-        // driver not supported
+        // driver not supported, SHOULD only be used by
+        // abbot daemon in HostNetworkConfigResponse to report
+        // unmanaged network interfaces
         DriverUnknown unknown = 10;
 
         DriverBridge bridge = 11;
@@ -53,13 +55,19 @@ message HostNetworkInterface {
 // persist and apply host network config for single provider source,
 // which means all expected interfaces in one request MUST share the
 // same provider, this restriction is to protect ohter managed
-// interfaces from being updated unexpectedly
+// interfaces from being updated unexpectedly.
+//
+// existing interfaces with same provider but not listed in the expected
+// will be delete, so request SHOULD include all interfaces from the
+// provider source.
 //
 // this request is transactional, if any failure occurred to any one
 // of the expected interfaces, abbot MUST rollback to previous state
 // and return an error indicating which interface failed
 message HostNetworkConfigEnsureRequest {
-    repeated HostNetworkInterface expected = 1;
+    string provider = 1;
+
+    repeated HostNetworkInterface expected = 2;
 }
 
 // Query host network config

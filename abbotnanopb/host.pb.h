@@ -19,6 +19,7 @@ extern "C" {
 
 /* Struct definitions */
 typedef struct _abbot_HostNetworkConfigEnsureRequest {
+    pb_callback_t provider;
     pb_callback_t expected;
 } abbot_HostNetworkConfigEnsureRequest;
 
@@ -45,16 +46,17 @@ typedef struct _abbot_HostNetworkInterface {
 
 /* Initializer values for message structs */
 #define abbot_HostNetworkInterface_init_default  {false, abbot_NetworkInterface_init_default, {{NULL}, NULL}, 0, {abbot_DriverUnknown_init_default}}
-#define abbot_HostNetworkConfigEnsureRequest_init_default {{{NULL}, NULL}}
+#define abbot_HostNetworkConfigEnsureRequest_init_default {{{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_HostNetworkConfigQueryRequest_init_default {{{NULL}, NULL}}
 #define abbot_HostNetworkConfigResponse_init_default {{{NULL}, NULL}}
 #define abbot_HostNetworkInterface_init_zero     {false, abbot_NetworkInterface_init_zero, {{NULL}, NULL}, 0, {abbot_DriverUnknown_init_zero}}
-#define abbot_HostNetworkConfigEnsureRequest_init_zero {{{NULL}, NULL}}
+#define abbot_HostNetworkConfigEnsureRequest_init_zero {{{NULL}, NULL}, {{NULL}, NULL}}
 #define abbot_HostNetworkConfigQueryRequest_init_zero {{{NULL}, NULL}}
 #define abbot_HostNetworkConfigResponse_init_zero {{{NULL}, NULL}}
 
 /* Field tags (for use in manual encoding/decoding) */
-#define abbot_HostNetworkConfigEnsureRequest_expected_tag 1
+#define abbot_HostNetworkConfigEnsureRequest_provider_tag 1
+#define abbot_HostNetworkConfigEnsureRequest_expected_tag 2
 #define abbot_HostNetworkConfigQueryRequest_providers_tag 1
 #define abbot_HostNetworkConfigResponse_actual_tag 1
 #define abbot_HostNetworkInterface_metadata_tag  1
@@ -78,7 +80,8 @@ X(a, STATIC,   ONEOF,    MESSAGE,  (config,wireguard,config.wireguard),  12)
 #define abbot_HostNetworkInterface_config_wireguard_MSGTYPE abbot_DriverWireguard
 
 #define abbot_HostNetworkConfigEnsureRequest_FIELDLIST(X, a) \
-X(a, CALLBACK, REPEATED, MESSAGE,  expected,          1)
+X(a, CALLBACK, SINGULAR, STRING,   provider,          1) \
+X(a, CALLBACK, REPEATED, MESSAGE,  expected,          2)
 #define abbot_HostNetworkConfigEnsureRequest_CALLBACK pb_default_field_callback
 #define abbot_HostNetworkConfigEnsureRequest_DEFAULT NULL
 #define abbot_HostNetworkConfigEnsureRequest_expected_MSGTYPE abbot_HostNetworkInterface

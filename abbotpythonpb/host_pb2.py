@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037arhat.dev/abbot-proto/abbotgopb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nhost.proto\x12\x05\x61\x62\x62ot\x1a\nmeta.proto\x1a\x14\x64river_unknown.proto\x1a\x13\x64river_bridge.proto\x1a\x16\x64river_wireguard.proto\"\xda\x01\n\x14HostNetworkInterface\x12)\n\x08metadata\x18\x01 \x01(\x0b\x32\x17.abbot.NetworkInterface\x12\x10\n\x08provider\x18\x02 \x01(\t\x12\'\n\x07unknown\x18\n \x01(\x0b\x32\x14.abbot.DriverUnknownH\x00\x12%\n\x06\x62ridge\x18\x0b \x01(\x0b\x32\x13.abbot.DriverBridgeH\x00\x12+\n\twireguard\x18\x0c \x01(\x0b\x32\x16.abbot.DriverWireguardH\x00\x42\x08\n\x06\x63onfig\"O\n\x1eHostNetworkConfigEnsureRequest\x12-\n\x08\x65xpected\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterface\"2\n\x1dHostNetworkConfigQueryRequest\x12\x11\n\tproviders\x18\x01 \x03(\t\"H\n\x19HostNetworkConfigResponse\x12+\n\x06\x61\x63tual\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterfaceB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
+  serialized_pb=b'\n\nhost.proto\x12\x05\x61\x62\x62ot\x1a\nmeta.proto\x1a\x14\x64river_unknown.proto\x1a\x13\x64river_bridge.proto\x1a\x16\x64river_wireguard.proto\"\xda\x01\n\x14HostNetworkInterface\x12)\n\x08metadata\x18\x01 \x01(\x0b\x32\x17.abbot.NetworkInterface\x12\x10\n\x08provider\x18\x02 \x01(\t\x12\'\n\x07unknown\x18\n \x01(\x0b\x32\x14.abbot.DriverUnknownH\x00\x12%\n\x06\x62ridge\x18\x0b \x01(\x0b\x32\x13.abbot.DriverBridgeH\x00\x12+\n\twireguard\x18\x0c \x01(\x0b\x32\x16.abbot.DriverWireguardH\x00\x42\x08\n\x06\x63onfig\"a\n\x1eHostNetworkConfigEnsureRequest\x12\x10\n\x08provider\x18\x01 \x01(\t\x12-\n\x08\x65xpected\x18\x02 \x03(\x0b\x32\x1b.abbot.HostNetworkInterface\"2\n\x1dHostNetworkConfigQueryRequest\x12\x11\n\tproviders\x18\x01 \x03(\t\"H\n\x19HostNetworkConfigResponse\x12+\n\x06\x61\x63tual\x18\x01 \x03(\x0b\x32\x1b.abbot.HostNetworkInterfaceB!Z\x1f\x61rhat.dev/abbot-proto/abbotgopbb\x06proto3'
   ,
   dependencies=[meta__pb2.DESCRIPTOR,driver__unknown__pb2.DESCRIPTOR,driver__bridge__pb2.DESCRIPTOR,driver__wireguard__pb2.DESCRIPTOR,])
 
@@ -104,8 +104,15 @@ _HOSTNETWORKCONFIGENSUREREQUEST = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='expected', full_name='abbot.HostNetworkConfigEnsureRequest.expected', index=0,
-      number=1, type=11, cpp_type=10, label=3,
+      name='provider', full_name='abbot.HostNetworkConfigEnsureRequest.provider', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='expected', full_name='abbot.HostNetworkConfigEnsureRequest.expected', index=1,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -123,7 +130,7 @@ _HOSTNETWORKCONFIGENSUREREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=321,
-  serialized_end=400,
+  serialized_end=418,
 )
 
 
@@ -154,8 +161,8 @@ _HOSTNETWORKCONFIGQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=402,
-  serialized_end=452,
+  serialized_start=420,
+  serialized_end=470,
 )
 
 
@@ -186,8 +193,8 @@ _HOSTNETWORKCONFIGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=454,
-  serialized_end=526,
+  serialized_start=472,
+  serialized_end=544,
 )
 
 _HOSTNETWORKINTERFACE.fields_by_name['metadata'].message_type = meta__pb2._NETWORKINTERFACE
